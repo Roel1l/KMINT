@@ -1,0 +1,413 @@
+\hypertarget{class_f_w_application}{\section{F\+W\+Application Class Reference}
+\label{class_f_w_application}\index{F\+W\+Application@{F\+W\+Application}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_f_w_application_a9d9ae1cd8e16ecb6c31990c39629067f}{{\bfseries F\+W\+Application} (int offset\+X=50, int offset\+Y=50, int width=800, int height=600)}\label{class_f_w_application_a9d9ae1cd8e16ecb6c31990c39629067f}
+
+\item 
+\hypertarget{class_f_w_application_a109e3927f7da9c5301fd5512f64178f2}{void {\bfseries Set\+Target\+F\+P\+S} (unsigned short target)}\label{class_f_w_application_a109e3927f7da9c5301fd5512f64178f2}
+
+\item 
+S\+D\+L\+\_\+\+Window $\ast$ \hyperlink{class_f_w_application_a0bd2e7dab8d26d674ec89803ab4789d3}{Get\+Window} () const 
+\begin{DoxyCompactList}\small\item\em Gets the window. \end{DoxyCompactList}\item 
+bool \hyperlink{class_f_w_application_ae8002752e6cf2a9a602a55a0f8db2873}{Is\+Running} ()
+\begin{DoxyCompactList}\small\item\em Is the game running, returns false when window is closed. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_f_w_application_a3d6a38a6314d281f6793d24951eaaed7}{Get\+Relative\+Path} (const std\+::string \&path=\char`\"{}\char`\"{}) const 
+\begin{DoxyCompactList}\small\item\em Returns a relative path at the binary location \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{class_f_w_application_aa103aa5ee7cdbe5e2cae01fcdfb19472}{Load\+Texture} (const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Loads a texture and returns it's pointer. Note you have to cleanup yourself \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a015406b6f70c8edb674bb0f50516500c}{Draw\+Texture} (S\+D\+L\+\_\+\+Texture $\ast$texture, int x\+Offset, int y\+Offset)
+\begin{DoxyCompactList}\small\item\em Draw a texture to the screen at a given position \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a6d9a4dc3068d15272c143b89cc22934e}{Draw\+Texture} (S\+D\+L\+\_\+\+Texture $\ast$texture, int x\+Offset, int y\+Offset, int width, int height)
+\begin{DoxyCompactList}\small\item\em Draw a texture to the screen at a given position \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_aace2f8e1125300546dc796cf74e34314}{Draw\+Line} (int start\+Pos\+X, int start\+Pos\+Y, int end\+Pos\+X, int end\+Pos\+Y)
+\begin{DoxyCompactList}\small\item\em Draws a line from position to position \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a5e8cd6326546fba991c787a481b7005c}{Draw\+Rect} (int start\+Pos\+X, int start\+Pos\+Y, int width, int height, bool fill)
+\begin{DoxyCompactList}\small\item\em Draws a rect from start position to end position \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a9af3769859c50a445ef8f0a08fc548ae}{Draw\+Text} (const std\+::string \&message, uint32\+\_\+t offset\+X, uint32\+\_\+t offset\+Y)
+\begin{DoxyCompactList}\small\item\em Draws text on the screen at a given location \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a7b04b6b13c221cf67728a7d6372c838c}{Start\+Tick} ()
+\begin{DoxyCompactList}\small\item\em Start of the cycle, catches input, etc. \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a6c5dbaaef4d13b0cf17727f8f84ef0fc}{End\+Tick} ()
+\begin{DoxyCompactList}\small\item\em End of the cycle, swaps buffers \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_afd869f6c0bf21b8bdc780ca9d513553f}{Remove\+Texture} (S\+D\+L\+\_\+\+Texture $\ast$texture)
+\begin{DoxyCompactList}\small\item\em Destroy a texture resource, and frees memory \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a45ce0cbf998ae9ed2c79c7bd73f8782a}{Set\+Color} (const \hyperlink{struct_color}{Color} \&color)
+\begin{DoxyCompactList}\small\item\em Set the color (as a state), all future draws are done with this color. \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a014258fb16a8eb170f38469bfb369166}{Set\+Font} (const std\+::string \&file\+Name)
+\begin{DoxyCompactList}\small\item\em Sets the font as a state, all future font rendering is done with this font. \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_ae59b00bb00d57974a74846af02fc58db}{Set\+Font\+Size} (int pt\+Size)
+\begin{DoxyCompactList}\small\item\em Sets the fontsize as a state, all future font rendering is done in this size. \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a97b8073420aec9a721408bde5d31ee9f}{Add\+Renderable} (\hyperlink{class_i_game_object}{I\+Game\+Object} $\ast$renderable)
+\begin{DoxyCompactList}\small\item\em Add a renderable object, update and render will be called when ticks are handled by the application. \end{DoxyCompactList}\item 
+\hypertarget{class_f_w_application_a40ce413be238be95a8815b0d0a474d75}{uint32\+\_\+t {\bfseries Get\+Time\+Since\+Started\+M\+S} () const }\label{class_f_w_application_a40ce413be238be95a8815b0d0a474d75}
+
+\item 
+void \hyperlink{class_f_w_application_a57e09a281fc706a0622f7204aaeb6bbe}{Update\+Game\+Objects} ()
+\begin{DoxyCompactList}\small\item\em Updates all game\+Objects \end{DoxyCompactList}\item 
+void \hyperlink{class_f_w_application_a1a9208982cc76086430616eaf7e88568}{Render\+Game\+Objects} ()
+\begin{DoxyCompactList}\small\item\em Renders all game\+Objects \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_f_w_application_ad52cf42e501e932275bca974ca32f4f7}{static \hyperlink{class_f_w_application}{F\+W\+Application} $\ast$ {\bfseries Get\+Instance} ()}\label{class_f_w_application_ad52cf42e501e932275bca974ca32f4f7}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_f_w_application_a97b8073420aec9a721408bde5d31ee9f}{\index{F\+W\+Application@{F\+W\+Application}!Add\+Renderable@{Add\+Renderable}}
+\index{Add\+Renderable@{Add\+Renderable}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Add\+Renderable}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Add\+Renderable (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+Game\+Object} $\ast$}]{renderable}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a97b8073420aec9a721408bde5d31ee9f}
+
+
+Add a renderable object, update and render will be called when ticks are handled by the application. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderable} & \mbox{[}in,out\mbox{]} If non-\/null, the renderable. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_aace2f8e1125300546dc796cf74e34314}{\index{F\+W\+Application@{F\+W\+Application}!Draw\+Line@{Draw\+Line}}
+\index{Draw\+Line@{Draw\+Line}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Draw\+Line}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Draw\+Line (
+\begin{DoxyParamCaption}
+\item[{int}]{start\+Pos\+X, }
+\item[{int}]{start\+Pos\+Y, }
+\item[{int}]{end\+Pos\+X, }
+\item[{int}]{end\+Pos\+Y}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_aace2f8e1125300546dc796cf74e34314}
+
+
+Draws a line from position to position 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Pos\+X} & The start position x coordinate. \\
+\hline
+{\em start\+Pos\+Y} & The start position y coordinate. \\
+\hline
+{\em end\+Pos\+X} & The end position x coordinate. \\
+\hline
+{\em end\+Pos\+Y} & The end position y coordinate. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a5e8cd6326546fba991c787a481b7005c}{\index{F\+W\+Application@{F\+W\+Application}!Draw\+Rect@{Draw\+Rect}}
+\index{Draw\+Rect@{Draw\+Rect}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Draw\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Draw\+Rect (
+\begin{DoxyParamCaption}
+\item[{int}]{start\+Pos\+X, }
+\item[{int}]{start\+Pos\+Y, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{bool}]{fill}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a5e8cd6326546fba991c787a481b7005c}
+
+
+Draws a rect from start position to end position 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Pos\+X} & The start position x coordinate. \\
+\hline
+{\em start\+Pos\+Y} & The start position y coordinate. \\
+\hline
+{\em width} & The width. \\
+\hline
+{\em height} & The height. \\
+\hline
+{\em fill} & true to fill. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a9af3769859c50a445ef8f0a08fc548ae}{\index{F\+W\+Application@{F\+W\+Application}!Draw\+Text@{Draw\+Text}}
+\index{Draw\+Text@{Draw\+Text}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Draw\+Text}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Draw\+Text (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{message, }
+\item[{uint32\+\_\+t}]{offset\+X, }
+\item[{uint32\+\_\+t}]{offset\+Y}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a9af3769859c50a445ef8f0a08fc548ae}
+
+
+Draws text on the screen at a given location 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & The message. \\
+\hline
+{\em offset\+X} & The offset x coordinate. \\
+\hline
+{\em offset\+Y} & The offset y coordinate. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a015406b6f70c8edb674bb0f50516500c}{\index{F\+W\+Application@{F\+W\+Application}!Draw\+Texture@{Draw\+Texture}}
+\index{Draw\+Texture@{Draw\+Texture}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Draw\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Draw\+Texture (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture, }
+\item[{int}]{x\+Offset, }
+\item[{int}]{y\+Offset}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a015406b6f70c8edb674bb0f50516500c}
+
+
+Draw a texture to the screen at a given position 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & \mbox{[}in,out\mbox{]} If non-\/null, the texture. \\
+\hline
+{\em x\+Offset} & The offset. \\
+\hline
+{\em y\+Offset} & The offset. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a6d9a4dc3068d15272c143b89cc22934e}{\index{F\+W\+Application@{F\+W\+Application}!Draw\+Texture@{Draw\+Texture}}
+\index{Draw\+Texture@{Draw\+Texture}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Draw\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Draw\+Texture (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture, }
+\item[{int}]{x\+Offset, }
+\item[{int}]{y\+Offset, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a6d9a4dc3068d15272c143b89cc22934e}
+
+
+Draw a texture to the screen at a given position 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & \mbox{[}in,out\mbox{]} If non-\/null, the texture. \\
+\hline
+{\em x\+Offset} & The offset. \\
+\hline
+{\em y\+Offset} & The offset. \\
+\hline
+{\em width} & The width. \\
+\hline
+{\em height} & The height. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a6c5dbaaef4d13b0cf17727f8f84ef0fc}{\index{F\+W\+Application@{F\+W\+Application}!End\+Tick@{End\+Tick}}
+\index{End\+Tick@{End\+Tick}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{End\+Tick}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+End\+Tick (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a6c5dbaaef4d13b0cf17727f8f84ef0fc}
+
+
+End of the cycle, swaps buffers 
+
+Joris, 21-\/10-\/2014. \hypertarget{class_f_w_application_a3d6a38a6314d281f6793d24951eaaed7}{\index{F\+W\+Application@{F\+W\+Application}!Get\+Relative\+Path@{Get\+Relative\+Path}}
+\index{Get\+Relative\+Path@{Get\+Relative\+Path}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Get\+Relative\+Path}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string F\+W\+Application\+::\+Get\+Relative\+Path (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{path = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+) const}}\label{class_f_w_application_a3d6a38a6314d281f6793d24951eaaed7}
+
+
+Returns a relative path at the binary location 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & (Optional) full pathname of the file. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The relative path. 
+\end{DoxyReturn}
+\hypertarget{class_f_w_application_a0bd2e7dab8d26d674ec89803ab4789d3}{\index{F\+W\+Application@{F\+W\+Application}!Get\+Window@{Get\+Window}}
+\index{Get\+Window@{Get\+Window}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Get\+Window}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Window $\ast$ F\+W\+Application\+::\+Get\+Window (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_f_w_application_a0bd2e7dab8d26d674ec89803ab4789d3}
+
+
+Gets the window. 
+
+Joris, 21-\/10-\/2014. 
+
+\begin{DoxyReturn}{Returns}
+The S\+D\+L window. 
+\end{DoxyReturn}
+\hypertarget{class_f_w_application_ae8002752e6cf2a9a602a55a0f8db2873}{\index{F\+W\+Application@{F\+W\+Application}!Is\+Running@{Is\+Running}}
+\index{Is\+Running@{Is\+Running}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Is\+Running}]{\setlength{\rightskip}{0pt plus 5cm}bool F\+W\+Application\+::\+Is\+Running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_ae8002752e6cf2a9a602a55a0f8db2873}
+
+
+Is the game running, returns false when window is closed. 
+
+Joris, 21-\/10-\/2014. 
+
+\begin{DoxyReturn}{Returns}
+true if running, false if not. 
+\end{DoxyReturn}
+\hypertarget{class_f_w_application_aa103aa5ee7cdbe5e2cae01fcdfb19472}{\index{F\+W\+Application@{F\+W\+Application}!Load\+Texture@{Load\+Texture}}
+\index{Load\+Texture@{Load\+Texture}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Load\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Texture $\ast$ F\+W\+Application\+::\+Load\+Texture (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{file\+Name}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_aa103aa5ee7cdbe5e2cae01fcdfb19472}
+
+
+Loads a texture and returns it's pointer. Note you have to cleanup yourself 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Filename of the file. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+null if it fails, else the texture. 
+\end{DoxyReturn}
+\hypertarget{class_f_w_application_afd869f6c0bf21b8bdc780ca9d513553f}{\index{F\+W\+Application@{F\+W\+Application}!Remove\+Texture@{Remove\+Texture}}
+\index{Remove\+Texture@{Remove\+Texture}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Remove\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Remove\+Texture (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_afd869f6c0bf21b8bdc780ca9d513553f}
+
+
+Destroy a texture resource, and frees memory 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & \mbox{[}in,out\mbox{]} If non-\/null, the texture. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a1a9208982cc76086430616eaf7e88568}{\index{F\+W\+Application@{F\+W\+Application}!Render\+Game\+Objects@{Render\+Game\+Objects}}
+\index{Render\+Game\+Objects@{Render\+Game\+Objects}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Render\+Game\+Objects}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Render\+Game\+Objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a1a9208982cc76086430616eaf7e88568}
+
+
+Renders all game\+Objects 
+
+Joris, 21-\/10-\/2014. \hypertarget{class_f_w_application_a45ce0cbf998ae9ed2c79c7bd73f8782a}{\index{F\+W\+Application@{F\+W\+Application}!Set\+Color@{Set\+Color}}
+\index{Set\+Color@{Set\+Color}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Set\+Color}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Set\+Color (
+\begin{DoxyParamCaption}
+\item[{const {\bf Color} \&}]{color}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a45ce0cbf998ae9ed2c79c7bd73f8782a}
+
+
+Set the color (as a state), all future draws are done with this color. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a014258fb16a8eb170f38469bfb369166}{\index{F\+W\+Application@{F\+W\+Application}!Set\+Font@{Set\+Font}}
+\index{Set\+Font@{Set\+Font}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Set\+Font}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Set\+Font (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{file\+Name}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a014258fb16a8eb170f38469bfb369166}
+
+
+Sets the font as a state, all future font rendering is done with this font. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & Filename of the file. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_ae59b00bb00d57974a74846af02fc58db}{\index{F\+W\+Application@{F\+W\+Application}!Set\+Font\+Size@{Set\+Font\+Size}}
+\index{Set\+Font\+Size@{Set\+Font\+Size}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Set\+Font\+Size}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Set\+Font\+Size (
+\begin{DoxyParamCaption}
+\item[{int}]{pt\+Size}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_ae59b00bb00d57974a74846af02fc58db}
+
+
+Sets the fontsize as a state, all future font rendering is done in this size. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pt\+Size} & Size of the point. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_f_w_application_a7b04b6b13c221cf67728a7d6372c838c}{\index{F\+W\+Application@{F\+W\+Application}!Start\+Tick@{Start\+Tick}}
+\index{Start\+Tick@{Start\+Tick}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Start\+Tick}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Start\+Tick (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a7b04b6b13c221cf67728a7d6372c838c}
+
+
+Start of the cycle, catches input, etc. 
+
+Joris, 21-\/10-\/2014. \hypertarget{class_f_w_application_a57e09a281fc706a0622f7204aaeb6bbe}{\index{F\+W\+Application@{F\+W\+Application}!Update\+Game\+Objects@{Update\+Game\+Objects}}
+\index{Update\+Game\+Objects@{Update\+Game\+Objects}!F\+W\+Application@{F\+W\+Application}}
+\subsubsection[{Update\+Game\+Objects}]{\setlength{\rightskip}{0pt plus 5cm}void F\+W\+Application\+::\+Update\+Game\+Objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_f_w_application_a57e09a281fc706a0622f7204aaeb6bbe}
+
+
+Updates all game\+Objects 
+
+Joris, 21-\/10-\/2014. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+F\+W\+Application.\+h\item 
+F\+W\+Application.\+cpp\end{DoxyCompactItemize}

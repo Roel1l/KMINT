@@ -1,0 +1,6 @@
+﻿  Main.cpp
+c:\users\rel\projects\kmint_framework-master\framework\sdlframework\sdlframework\flockingglobals.h(17): warning C4305: 'initializing': truncation from 'double' to 'bool'
+c:\users\rel\projects\kmint_framework-master\framework\sdlframework\sdlframework\main.cpp(102): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\projects\kmint_framework-master\framework\sdlframework\sdlframework\main.cpp(67): warning C4065: switch statement contains 'default' but no 'case' labels
+  SDLFramework.vcxproj -> C:\Users\Rel\Projects\KMINT_Framework-master\Framework\SDLFramework\Debug\SDLFramework.exe
+  SDLFramework.vcxproj -> C:\Users\Rel\Projects\KMINT_Framework-master\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

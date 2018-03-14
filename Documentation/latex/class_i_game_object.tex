@@ -1,0 +1,355 @@
+\hypertarget{class_i_game_object}{\section{I\+Game\+Object Class Reference}
+\label{class_i_game_object}\index{I\+Game\+Object@{I\+Game\+Object}}
+}
+Inheritance diagram for I\+Game\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_i_game_object}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_i_game_object_aabf746343989a0a29543a3d6db48b6a4}{Draw} ()=0
+\begin{DoxyCompactList}\small\item\em Abstract draw method \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_a4959cd2f80334cfa1a97255082e984cc}{Update} (float delta\+Time)=0
+\begin{DoxyCompactList}\small\item\em Abstract update method \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_a31702eed0f78cff5e5d49717751bd39d}{On\+Collision} (\hyperlink{class_i_game_object}{I\+Game\+Object} $\ast$collided\+Object)=0
+\begin{DoxyCompactList}\small\item\em Abstract on\+Collision method \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_abef2c39177245bdca445db64a1d24be8}{Set\+Offset} (uint32\+\_\+t x, uint32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Set the offset of this object (translation) \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_a133dd7afcf061416f25135e2d29412f9}{Get\+Offset} (uint32\+\_\+t \&x, uint32\+\_\+t \&y) const 
+\begin{DoxyCompactList}\small\item\em Get the offset of this object (translation) \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_a1eddecf9e89fc2df118e2a801bf01875}{Set\+Size} (uint32\+\_\+t width, uint32\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Set the bounding box of this object. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_ace84e8ce58a6886028f2ada293a170c7}{Get\+Size} (uint32\+\_\+t \&width, uint32\+\_\+t \&height) const 
+\begin{DoxyCompactList}\small\item\em Get the bounding box of this object. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_a0c27f50dd3783bdc126beb249dc160d0}{Translate} (uint32\+\_\+t x, uint32\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Move this object by a given amount. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_i_game_object_a6c4babfa9e8eadd50599e5b7c4dd9e12}{Set\+Texture} (S\+D\+L\+\_\+\+Texture $\ast$texture)
+\begin{DoxyCompactList}\small\item\em Set the texture of this object. \end{DoxyCompactList}\item 
+virtual S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{class_i_game_object_af2a85a8821cbe4305ce92c8bbe8ecf5e}{Get\+Texture} () const 
+\begin{DoxyCompactList}\small\item\em Get the texture of this object. \end{DoxyCompactList}\item 
+virtual float \hyperlink{class_i_game_object_a0ef5e610a6afc8215902853820a7e954}{Distance\+To} (\hyperlink{class_i_game_object}{I\+Game\+Object} $\ast$obj)
+\begin{DoxyCompactList}\small\item\em Get the distance to another object \end{DoxyCompactList}\item 
+virtual float \hyperlink{class_i_game_object_ad34f7ba9433ba5e449852593011ffb6a}{Distance\+To} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Get the distance to a given position \end{DoxyCompactList}\item 
+virtual S\+D\+L\+\_\+\+Rect \hyperlink{class_i_game_object_aa6ca1547043ec0c072f8dee6f567e2a9}{Get\+Bounding\+Box} () const 
+\begin{DoxyCompactList}\small\item\em Get the rect of this object. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_i_game_object_a7ca855de4ee1b392926dbd6bdd03f6e3}{Check\+Collision} (\hyperlink{class_i_game_object}{I\+Game\+Object} $\ast$o)
+\begin{DoxyCompactList}\small\item\em Check if an object is currently colliding with another object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_i_game_object_a220c4930e5c05f5439a9500ed0a9dbbb}{\hyperlink{class_f_w_application}{F\+W\+Application} $\ast$ {\bfseries m\+Application}}\label{class_i_game_object_a220c4930e5c05f5439a9500ed0a9dbbb}
+
+\item 
+\hypertarget{class_i_game_object_a84a1ac4af74782e8538979a821141047}{S\+D\+L\+\_\+\+Texture $\ast$ {\bfseries m\+Texture}}\label{class_i_game_object_a84a1ac4af74782e8538979a821141047}
+
+\item 
+\hypertarget{class_i_game_object_af9b68e07a9421585895fd57958cd4064}{uint32\+\_\+t {\bfseries m\+X}}\label{class_i_game_object_af9b68e07a9421585895fd57958cd4064}
+
+\item 
+\hypertarget{class_i_game_object_a4aa4eb751cd7e7a2d5c849b68e062cde}{uint32\+\_\+t {\bfseries m\+Y}}\label{class_i_game_object_a4aa4eb751cd7e7a2d5c849b68e062cde}
+
+\item 
+\hypertarget{class_i_game_object_a40428382f876086d82c8d051c5cb268a}{uint32\+\_\+t {\bfseries m\+Width}}\label{class_i_game_object_a40428382f876086d82c8d051c5cb268a}
+
+\item 
+\hypertarget{class_i_game_object_a487f7e17554d9ae5364a7d2a65b3f2fa}{uint32\+\_\+t {\bfseries m\+Height}}\label{class_i_game_object_a487f7e17554d9ae5364a7d2a65b3f2fa}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_game_object_a7ca855de4ee1b392926dbd6bdd03f6e3}{\index{I\+Game\+Object@{I\+Game\+Object}!Check\+Collision@{Check\+Collision}}
+\index{Check\+Collision@{Check\+Collision}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Check\+Collision}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool I\+Game\+Object\+::\+Check\+Collision (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+Game\+Object} $\ast$}]{o}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_a7ca855de4ee1b392926dbd6bdd03f6e3}
+
+
+Check if an object is currently colliding with another object. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & \mbox{[}in,out\mbox{]} If non-\/null, the \hyperlink{class_i_game_object}{I\+Game\+Object} $\ast$ to process. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+true if it succeeds, false if it fails. 
+\end{DoxyReturn}
+\hypertarget{class_i_game_object_a0ef5e610a6afc8215902853820a7e954}{\index{I\+Game\+Object@{I\+Game\+Object}!Distance\+To@{Distance\+To}}
+\index{Distance\+To@{Distance\+To}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Distance\+To}]{\setlength{\rightskip}{0pt plus 5cm}virtual float I\+Game\+Object\+::\+Distance\+To (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+Game\+Object} $\ast$}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_a0ef5e610a6afc8215902853820a7e954}
+
+
+Get the distance to another object 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em obj} & \mbox{[}in,out\mbox{]} If non-\/null, the object. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+Distance to object. 
+\end{DoxyReturn}
+\hypertarget{class_i_game_object_ad34f7ba9433ba5e449852593011ffb6a}{\index{I\+Game\+Object@{I\+Game\+Object}!Distance\+To@{Distance\+To}}
+\index{Distance\+To@{Distance\+To}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Distance\+To}]{\setlength{\rightskip}{0pt plus 5cm}virtual float I\+Game\+Object\+::\+Distance\+To (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_ad34f7ba9433ba5e449852593011ffb6a}
+
+
+Get the distance to a given position 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate. \\
+\hline
+{\em y} & The y coordinate. \\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+Distance to object. 
+\end{DoxyReturn}
+\hypertarget{class_i_game_object_aabf746343989a0a29543a3d6db48b6a4}{\index{I\+Game\+Object@{I\+Game\+Object}!Draw@{Draw}}
+\index{Draw@{Draw}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Draw}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_game_object_aabf746343989a0a29543a3d6db48b6a4}
+
+
+Abstract draw method 
+
+Joris, 21-\/10-\/2014. 
+
+Implemented in \hyperlink{class_monster_ab8dc2e4d443d23c46a705aa9bc66d3dd}{Monster}.
+
+\hypertarget{class_i_game_object_aa6ca1547043ec0c072f8dee6f567e2a9}{\index{I\+Game\+Object@{I\+Game\+Object}!Get\+Bounding\+Box@{Get\+Bounding\+Box}}
+\index{Get\+Bounding\+Box@{Get\+Bounding\+Box}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Get\+Bounding\+Box}]{\setlength{\rightskip}{0pt plus 5cm}virtual S\+D\+L\+\_\+\+Rect I\+Game\+Object\+::\+Get\+Bounding\+Box (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_aa6ca1547043ec0c072f8dee6f567e2a9}
+
+
+Get the rect of this object. 
+
+Joris, 21-\/10-\/2014. 
+
+\begin{DoxyReturn}{Returns}
+The bounding box. 
+\end{DoxyReturn}
+\hypertarget{class_i_game_object_a133dd7afcf061416f25135e2d29412f9}{\index{I\+Game\+Object@{I\+Game\+Object}!Get\+Offset@{Get\+Offset}}
+\index{Get\+Offset@{Get\+Offset}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Get\+Offset}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Get\+Offset (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t \&}]{x, }
+\item[{uint32\+\_\+t \&}]{y}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_a133dd7afcf061416f25135e2d29412f9}
+
+
+Get the offset of this object (translation) 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \mbox{[}in,out\mbox{]} The uint32\+\_\+t \& to process. \\
+\hline
+{\em y} & \mbox{[}in,out\mbox{]} The uint32\+\_\+t \& to process. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_game_object_ace84e8ce58a6886028f2ada293a170c7}{\index{I\+Game\+Object@{I\+Game\+Object}!Get\+Size@{Get\+Size}}
+\index{Get\+Size@{Get\+Size}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Get\+Size}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Get\+Size (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t \&}]{width, }
+\item[{uint32\+\_\+t \&}]{height}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_ace84e8ce58a6886028f2ada293a170c7}
+
+
+Get the bounding box of this object. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & \mbox{[}in,out\mbox{]} The width. \\
+\hline
+{\em height} & \mbox{[}in,out\mbox{]} The height. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_game_object_af2a85a8821cbe4305ce92c8bbe8ecf5e}{\index{I\+Game\+Object@{I\+Game\+Object}!Get\+Texture@{Get\+Texture}}
+\index{Get\+Texture@{Get\+Texture}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Get\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}virtual S\+D\+L\+\_\+\+Texture$\ast$ I\+Game\+Object\+::\+Get\+Texture (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_af2a85a8821cbe4305ce92c8bbe8ecf5e}
+
+
+Get the texture of this object. 
+
+Joris, 21-\/10-\/2014. 
+
+\begin{DoxyReturn}{Returns}
+The texture. 
+\end{DoxyReturn}
+\hypertarget{class_i_game_object_a31702eed0f78cff5e5d49717751bd39d}{\index{I\+Game\+Object@{I\+Game\+Object}!On\+Collision@{On\+Collision}}
+\index{On\+Collision@{On\+Collision}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{On\+Collision}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+On\+Collision (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+Game\+Object} $\ast$}]{collided\+Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_game_object_a31702eed0f78cff5e5d49717751bd39d}
+
+
+Abstract on\+Collision method 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em collided\+Object} & \mbox{[}in,out\mbox{]} If non-\/null, the collided object. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_monster_a6e4cf2a4533245f65215243ef659b858}{Monster}.
+
+\hypertarget{class_i_game_object_abef2c39177245bdca445db64a1d24be8}{\index{I\+Game\+Object@{I\+Game\+Object}!Set\+Offset@{Set\+Offset}}
+\index{Set\+Offset@{Set\+Offset}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Set\+Offset}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Set\+Offset (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{x, }
+\item[{uint32\+\_\+t}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_abef2c39177245bdca445db64a1d24be8}
+
+
+Set the offset of this object (translation) 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The uint32\+\_\+t to process. \\
+\hline
+{\em y} & The uint32\+\_\+t to process. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_game_object_a1eddecf9e89fc2df118e2a801bf01875}{\index{I\+Game\+Object@{I\+Game\+Object}!Set\+Size@{Set\+Size}}
+\index{Set\+Size@{Set\+Size}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Set\+Size}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Set\+Size (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{width, }
+\item[{uint32\+\_\+t}]{height}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_a1eddecf9e89fc2df118e2a801bf01875}
+
+
+Set the bounding box of this object. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & The width. \\
+\hline
+{\em height} & The height. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_game_object_a6c4babfa9e8eadd50599e5b7c4dd9e12}{\index{I\+Game\+Object@{I\+Game\+Object}!Set\+Texture@{Set\+Texture}}
+\index{Set\+Texture@{Set\+Texture}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Set\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Set\+Texture (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{texture}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_a6c4babfa9e8eadd50599e5b7c4dd9e12}
+
+
+Set the texture of this object. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texture} & \mbox{[}in,out\mbox{]} If non-\/null, the texture. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_game_object_a0c27f50dd3783bdc126beb249dc160d0}{\index{I\+Game\+Object@{I\+Game\+Object}!Translate@{Translate}}
+\index{Translate@{Translate}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Translate}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Translate (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{x, }
+\item[{uint32\+\_\+t}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_i_game_object_a0c27f50dd3783bdc126beb249dc160d0}
+
+
+Move this object by a given amount. 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The uint32\+\_\+t to process. \\
+\hline
+{\em y} & The uint32\+\_\+t to process. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_game_object_a4959cd2f80334cfa1a97255082e984cc}{\index{I\+Game\+Object@{I\+Game\+Object}!Update@{Update}}
+\index{Update@{Update}!I\+Game\+Object@{I\+Game\+Object}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}virtual void I\+Game\+Object\+::\+Update (
+\begin{DoxyParamCaption}
+\item[{float}]{delta\+Time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_i_game_object_a4959cd2f80334cfa1a97255082e984cc}
+
+
+Abstract update method 
+
+Joris, 21-\/10-\/2014. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em delta\+Time} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_monster_ae3cfc1c225b800d11d7f9ae864687268}{Monster}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+I\+Game\+Object.\+h\end{DoxyCompactItemize}
