@@ -11,6 +11,7 @@
 #include "GraphObject.h"
 #include "Map.h"
 #include "Artist.h"
+#include "Globals.h"
 
 using namespace std;
 
@@ -55,8 +56,10 @@ int main(int args[])
 
 	while (application->IsRunning())
 	{
+		GLOBAL_ACTION_TIMER = GLOBAL_ACTION_TIMER >= GLOBAL_SPEED ? 0 : GLOBAL_ACTION_TIMER + 1;
 		application->StartTick();
 
+#pragma region Handling Key Events
 		SDL_Event event;
 		while (SDL_PollEvent(&event))
 		{
@@ -66,26 +69,26 @@ int main(int args[])
 				application->Quit();
 				break;
 			case SDL_KEYDOWN:
-				switch (event.key.keysym.sym) {
-
+				switch (event.key.keysym.scancode) {
+				case SDL_SCANCODE_PAGEUP:
+					GLOBAL_SPEED--;
+					LOG("GLOBAL_SPEED SET TO: " + std::to_string(GLOBAL_SPEED));
+					break;
+				case SDL_SCANCODE_PAGEDOWN:
+					GLOBAL_SPEED++;
+					LOG("GLOBAL_SPEED SET TO: " + std::to_string(GLOBAL_SPEED));
+					break;
 				default:
 					break;
 				}
 				break;
 			case SDL_MOUSEBUTTONDOWN:
-				/*if (event.button.button == 1) {
-					int mouseX = 0;
-					int mouseY = 0;
-					SDL_GetMouseState(&mouseX, &mouseY);
-
-					Bird* bird = new Bird(lastId + 1, birds, mouseX, mouseY);
-					birds->push_back(bird);
-					application->AddRenderable(bird);
-					lastId++;
-				}*/
 				break;
 			}
 		}
+#pragma endregion
+
+		
 
 		//application->SetColor(Color(0, 0, 0, 255));
 		//application->DrawText("Welcome to KMint", 400, 300);
@@ -118,7 +121,7 @@ int main(int args[])
 		map->drawMap(application);
 
 		//// For the background
-		application->SetColor(Color(255, 255, 255, 255));
+		//application->SetColor(Color(255, 255, 255, 255));
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();

@@ -3,6 +3,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include "Math.h"
 #include "Tile.h"
 #include "FWApplication.h"
 
@@ -17,8 +19,14 @@ public:
 
 	void initTileNeighbours();
 
+	int xMax = 0;
+	int yMax = 0;
 
 	void drawMap(FWApplication * application);
+
+	std::vector<Tile*> findPath(Tile * start, Tile * target);
+
+	double getDistance(Tile * A, Tile * B);
 
 	std::vector<std::vector<Tile*>> grid;
 };

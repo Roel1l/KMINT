@@ -72,6 +72,9 @@
     <ClInclude Include="Artist.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />

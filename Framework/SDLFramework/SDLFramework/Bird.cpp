@@ -216,10 +216,3 @@ std::vector<Bird*> Bird::getNearbyBirds(double range)
 }
 
 
-int Bird::generateRandom(int min, int max) {
-	std::mt19937 rng(rd()); 
-	std::uniform_int_distribution<int> uni(min, max); 
-
-	auto random_integer = uni(rng);
-	return random_integer;
-}

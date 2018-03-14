@@ -2,6 +2,7 @@
 #include "IGameObject.h"
 #include "vector.h"
 #include <random>
+#include "Globals.h"
 
 class Bird : public IGameObject
 {
@@ -27,9 +28,6 @@ private:
 	int screenHeigth = 720;
 	SDL_Texture *texture;
 	std::vector<Bird*> getNearbyBirds(double range);
-	int generateRandom(int min, int max);
-	std::random_device rd;
-	int steerCounter = 0;
 
 };
 

@@ -104,6 +104,7 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="FlockingGlobals.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="GraphObject.h" />
     <ClInclude Include="IGameObject.h" />
