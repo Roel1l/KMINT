@@ -6,19 +6,20 @@ GraphObject::GraphObject(Graph* g)
 {
 	graph = g;
 	currentVertex = g->vertices[1];
-	texture = mApplication->LoadTexture("lemmling_Cartoon_cow.png");
-	this->SetTexture(texture);
-	this->SetSize(30, 30);
+
+
 }
 
 
 GraphObject::~GraphObject()
 {
-	SDL_DestroyTexture(texture);
+
 }
 
 void GraphObject::Update(float deltaTime)
 {
-	SetOffset(currentVertex->x, currentVertex->y, 0);
+	mApplication->SetColor(Color(0, 0, 102, 255));
+	mApplication->DrawCircle(currentVertex->x, currentVertex->y, 10, true);
+//	SetOffset(currentVertex->x, currentVertex->y, 0);
 }
 

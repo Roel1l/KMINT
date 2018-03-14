@@ -22,6 +22,12 @@
     <ClCompile Include="GraphObject.cpp">
       <Filter>Pathfinding</Filter>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bird.h">
@@ -53,6 +59,12 @@
     </ClInclude>
     <ClInclude Include="GraphObject.h">
       <Filter>Pathfinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

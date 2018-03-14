@@ -9,23 +9,22 @@
 #include "FlockingGlobals.h"
 #include "Graph.h"
 #include "GraphObject.h"
+#include "Map.h"
 
 using namespace std;
 
 int main(int args[])
 {
-	//auto window = Window::CreateSDLWindow();
 	auto application = new FWApplication();
-	if (!application->GetWindow())
-	{
-		LOG("Couldn't create window...");
-		return EXIT_FAILURE;
-	}
+	if (!application->GetWindow()){ LOG("Couldn't create window..."); return EXIT_FAILURE; }
 
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
-	#pragma region Flocking
+	Map* map = new Map();
+	map->loadMap();
+
+#pragma region Flocking
 	std::vector<Bird*>* birds = new vector<Bird*>;
 	int lastId = 0;
 
@@ -35,15 +34,16 @@ int main(int args[])
 		application->AddRenderable(bird);
 		lastId++;
 	}
-	#pragma endregion
 
-	#pragma region Pathfinding
+#pragma endregion
+
+#pragma region Pathfinding
 	Graph* graph = new Graph();
 	graph->init();
 
 	GraphObject* example = new GraphObject(graph);
 	application->AddRenderable(example);
-	#pragma endregion
+#pragma endregion
 
 	std::vector<Vertex*> path = graph->findPath(graph->vertices[0], graph->vertices[graph->vertices.size() - 1]);
 
@@ -61,7 +61,7 @@ int main(int args[])
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym) {
-					
+
 				default:
 					break;
 				}
@@ -71,7 +71,7 @@ int main(int args[])
 					int mouseX = 0;
 					int mouseY = 0;
 					SDL_GetMouseState(&mouseX, &mouseY);
-	
+
 					Bird* bird = new Bird(lastId + 1, birds, mouseX, mouseY);
 					birds->push_back(bird);
 					application->AddRenderable(bird);
@@ -84,13 +84,17 @@ int main(int args[])
 		//application->SetColor(Color(0, 0, 0, 255));
 		//application->DrawText("Welcome to KMint", 400, 300);
 
-		#pragma region Pathfinding
+#pragma region Pathfinding
 
-			if (path.size() > 0) {
-				example->currentVertex = path[0];
-				path.erase(path.begin());
-			}
-		
+
+
+		if (path.size() > 0) {
+			example->currentVertex = path[0];
+			path.erase(path.begin());
+		}
+		else {
+			path = graph->findPath(graph->vertices[graph->vertices.size() - 1], graph->vertices[0]);
+		}
 
 		for (auto const& vertice : graph->vertices) {
 			if (std::find(path.begin(), path.end(), vertice) != path.end()) {
@@ -99,11 +103,13 @@ int main(int args[])
 			else {
 				application->SetColor(Color(0, 0, 255, 255));
 			}
-			application->DrawCircle(vertice->x, vertice->y, 5, true);
+			application->DrawRect(vertice->x, vertice->y, 20, 20, true);
 		}
 
-		#pragma endregion
 
+#pragma endregion
+
+		map->drawMap(application);
 
 		//// For the background
 		application->SetColor(Color(255, 255, 255, 255));
@@ -119,5 +125,6 @@ int main(int args[])
 	}
 	delete birds;
 	delete graph;
+	delete map;
 	return EXIT_SUCCESS;
 }

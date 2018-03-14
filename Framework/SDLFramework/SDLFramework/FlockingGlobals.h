@@ -18,4 +18,4 @@ const bool STEER_INTENSITY = 0.05;
 
 const bool RANDOM_SPAWN = false;
 const double SPEED = 2;
-const int AMOUNT_OF_BIRDS = 10;
+const int AMOUNT_OF_BIRDS = 100;
