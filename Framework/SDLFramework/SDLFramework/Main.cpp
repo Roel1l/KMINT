@@ -7,8 +7,6 @@
 #include <time.h>
 #include "Bird.h"
 #include "FlockingGlobals.h"
-#include "Graph.h"
-#include "GraphObject.h"
 #include "Map.h"
 #include "Artist.h"
 #include "Globals.h"
@@ -29,9 +27,8 @@ int main(int args[])
 	
 	Artist* axel_tulp = new Artist(map);
 	application->AddRenderable(axel_tulp);
-	
 
-#pragma region Flocking
+#pragma region Fans
 	std::vector<Bird*>* birds = new vector<Bird*>;
 	int lastId = 0;
 
@@ -43,16 +40,6 @@ int main(int args[])
 	}
 
 #pragma endregion
-
-#pragma region Pathfinding
-	Graph* graph = new Graph();
-	graph->init();
-
-	GraphObject* example = new GraphObject(graph);
-	application->AddRenderable(example);
-#pragma endregion
-
-	std::vector<Vertex*> path = graph->findPath(graph->vertices[0], graph->vertices[graph->vertices.size() - 1]);
 
 	while (application->IsRunning())
 	{
@@ -88,40 +75,10 @@ int main(int args[])
 		}
 #pragma endregion
 
-		
-
 		//application->SetColor(Color(0, 0, 0, 255));
 		//application->DrawText("Welcome to KMint", 400, 300);
 
-#pragma region Pathfinding
-
-
-
-		if (path.size() > 0) {
-			example->currentVertex = path[0];
-			path.erase(path.begin());
-		}
-		else {
-			path = graph->findPath(graph->vertices[graph->vertices.size() - 1], graph->vertices[0]);
-		}
-
-		for (auto const& vertice : graph->vertices) {
-			if (std::find(path.begin(), path.end(), vertice) != path.end()) {
-				application->SetColor(Color(255, 0, 0, 255));
-			}
-			else {
-				application->SetColor(Color(0, 0, 255, 255));
-			}
-			application->DrawRect(vertice->x, vertice->y, 20, 20, true);
-		}
-
-
-#pragma endregion
-
 		map->drawMap(application);
-
-		//// For the background
-		//application->SetColor(Color(255, 255, 255, 255));
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
@@ -133,8 +90,7 @@ int main(int args[])
 		delete var;
 	}
 	delete birds;
-	delete graph;
 	delete map;
-	delete axel_tulp;
+	//delete axel_tulp;
 	return EXIT_SUCCESS;
 }

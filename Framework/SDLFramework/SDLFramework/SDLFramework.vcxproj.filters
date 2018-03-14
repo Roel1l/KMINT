@@ -13,15 +13,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp">
-      <Filter>Pathfinding</Filter>
-    </ClCompile>
-    <ClCompile Include="Graph.cpp">
-      <Filter>Pathfinding</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphObject.cpp">
-      <Filter>Pathfinding</Filter>
-    </ClCompile>
     <ClCompile Include="Map.cpp">
       <Filter>Main</Filter>
     </ClCompile>
@@ -48,20 +39,8 @@
     <ClInclude Include="Vector.h">
       <Filter>Flocking</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Pathfinding</Filter>
-    </ClInclude>
-    <ClInclude Include="PathfindingGlobals.h">
-      <Filter>Pathfinding</Filter>
-    </ClInclude>
     <ClInclude Include="FlockingGlobals.h">
       <Filter>Flocking</Filter>
-    </ClInclude>
-    <ClInclude Include="GraphObject.h">
-      <Filter>Pathfinding</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
       <Filter>Main</Filter>
@@ -85,9 +64,6 @@
     </Filter>
     <Filter Include="Main">
       <UniqueIdentifier>{d370eed9-4e42-40b3-88a1-8cb41636d702}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Pathfinding">
-      <UniqueIdentifier>{8310ac5c-a08c-4c81-855e-61265630d6df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

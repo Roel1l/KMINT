@@ -87,13 +87,10 @@
     <ClCompile Include="Artist.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="FWApplication.cpp" />
-    <ClCompile Include="Graph.cpp" />
-    <ClCompile Include="GraphObject.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Vector.cpp" />
-    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -105,14 +102,10 @@
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="FlockingGlobals.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Graph.h" />
-    <ClInclude Include="GraphObject.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="PathfindingGlobals.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

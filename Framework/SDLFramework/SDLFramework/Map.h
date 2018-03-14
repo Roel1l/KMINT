@@ -19,8 +19,8 @@ public:
 
 	void initTileNeighbours();
 
-	int xMax = 0;
-	int yMax = 0;
+	int xMax = 0; //Zero-based
+	int yMax = 0; //Zero-based
 
 	void drawMap(FWApplication * application);
 
