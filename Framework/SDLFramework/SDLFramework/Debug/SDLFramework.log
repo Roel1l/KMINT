@@ -1,4 +1,19 @@
-﻿  GraphObject.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\graphobject.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+﻿  Artist.cpp
+  Generating Code...
+  Compiling...
+  Tile.cpp
+  Map.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(29): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(46): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(48): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(51): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(52): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(61): warning C4018: '<': signed/unsigned mismatch
+  Main.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\flockingglobals.h(17): warning C4305: 'initializing': truncation from 'double' to 'bool'
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(112): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(73): warning C4065: switch statement contains 'default' but no 'case' labels
+  Generating Code...
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

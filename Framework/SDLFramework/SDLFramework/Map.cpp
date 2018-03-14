@@ -19,19 +19,19 @@ void Map::loadMap() {
 	std::ifstream infile("../Resources/map.txt");
 	std::string line;
 
-	int row = 0;
+	int x = 0;
 
 	while (std::getline(infile, line)) {
 		if (line.length() > 0) {
 			std::vector<Tile*> s;
 			grid.push_back(s);
 
-			for each (char type in line)
+			for (int y = 0; y < line.length(); y++)
 			{
-				grid[row].push_back(new Tile(type));
+				grid[x].push_back(new Tile(line[y], x * 20, y * 20));
 			}
 
-			row++;
+			x++;
 		}
 	}
 
@@ -39,7 +39,20 @@ void Map::loadMap() {
 }
 
 Tile* Map::getTile(int x, int y) {
-	return grid[x / 20][y / 20];
+	return grid[x][y];
+}
+
+void Map::initTileNeighbours() {
+	for (int x = 0; x < grid.size(); x++)
+	{
+		for (int y = 0; y < grid[x].size(); y++)
+		{
+			if(x > 0) grid[x][y]->neighbours.push_back(grid[x - 1][y]); //Links
+			if(x < grid.size() - 1) grid[x][y]->neighbours.push_back(grid[x + 1][y]); //Rechts
+			if (y < grid[x].size() - 1) grid[x][y]->neighbours.push_back(grid[x][y + 1]); //Onder
+			if (y > 0) grid[x][y]->neighbours.push_back(grid[x][y - 1]); //Boven
+		}
+	}
 }
 
 void Map::drawMap(FWApplication* application) {

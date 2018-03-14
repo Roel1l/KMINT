@@ -10,6 +10,7 @@
 #include "Graph.h"
 #include "GraphObject.h"
 #include "Map.h"
+#include "Artist.h"
 
 using namespace std;
 
@@ -23,6 +24,11 @@ int main(int args[])
 
 	Map* map = new Map();
 	map->loadMap();
+	map->initTileNeighbours();
+	
+	Artist* axel_tulp = new Artist(map);
+	application->AddRenderable(axel_tulp);
+	
 
 #pragma region Flocking
 	std::vector<Bird*>* birds = new vector<Bird*>;
@@ -126,5 +132,6 @@ int main(int args[])
 	delete birds;
 	delete graph;
 	delete map;
+	delete axel_tulp;
 	return EXIT_SUCCESS;
 }

@@ -28,6 +28,9 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="Artist.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bird.h">
@@ -64,6 +67,9 @@
       <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Artist.h">
       <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>

@@ -15,6 +15,9 @@ public:
 
 	Tile * getTile(int x, int y);
 
+	void initTileNeighbours();
+
+
 	void drawMap(FWApplication * application);
 
 	std::vector<std::vector<Tile*>> grid;

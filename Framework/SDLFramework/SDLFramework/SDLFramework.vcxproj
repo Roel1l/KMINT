@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Artist.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Graph.cpp" />
@@ -98,6 +99,7 @@
     <None Include="SDL2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Artist.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />
