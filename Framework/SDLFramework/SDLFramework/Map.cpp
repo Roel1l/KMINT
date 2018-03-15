@@ -107,7 +107,7 @@ std::vector<Tile*> Map::findPath(Tile* start, Tile* target) {
 				continue;
 			}
 
-			double newMovementCostToNeighbour = current->gCost + getDistance(current, neighbour);
+			double newMovementCostToNeighbour = current->gCost + getDistance(current, neighbour) * neighbour->weight();
 			if (newMovementCostToNeighbour < neighbour->gCost || std::find(openSet.begin(), openSet.end(), neighbour) == openSet.end()) {
 				neighbour->gCost = newMovementCostToNeighbour;
 				neighbour->hCost = getDistance(neighbour, target);

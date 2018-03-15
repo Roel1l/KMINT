@@ -1,5 +1,4 @@
-﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  Map.cpp
+﻿  Map.cpp
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(23): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(34): warning C4018: '<': signed/unsigned mismatch
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(38): warning C4018: '<': signed/unsigned mismatch
