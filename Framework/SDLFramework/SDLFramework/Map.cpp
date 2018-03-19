@@ -43,6 +43,17 @@ void Map::loadMap() {
 	}
 
 	infile.close();
+
+	for (int x = 0; x < xMax; x++)
+	{
+		for (int y = 0; y < yMax; y++)
+		{
+			char tileType = grid[x][y]->type;
+			if (tileType == 'B') solidTileIndexes.push_back(std::tuple<int, int>({ x, y }));
+			else if(tileType == '1' || tileType == '2' || tileType == '3') walkableTileIndexes.push_back(std::tuple<int, int>({ x, y }));
+			else shopTileIndexes.push_back(std::tuple<int, int>({ x, y }));
+		}
+	}
 }
 
 Tile* Map::getTile(int x, int y) {
@@ -68,7 +79,6 @@ void Map::drawMap(FWApplication* application) {
 		for (int y = 0; y < yMax; y++)
 		{
 			application->SetColor(grid[x][y]->color());
-
 			application->DrawRect(x * 20, y * 20, 20, 20, true);
 		}
 	}

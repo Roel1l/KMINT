@@ -24,8 +24,6 @@ public:
 	int id;
 	std::vector<Bird*>* birds;
 private:
-	int screenWidth = 1280;
-	int screenHeigth = 720;
 	SDL_Texture *texture;
 	std::vector<Bird*> getNearbyBirds(double range);
 

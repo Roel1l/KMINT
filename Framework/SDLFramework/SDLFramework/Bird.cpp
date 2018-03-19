@@ -12,10 +12,10 @@
 Bird::Bird(int birdId, std::vector<Bird*>* birdsIn)
 {
 	if (RANDOM_SPAWN) {
-		x = generateRandom(0, screenWidth);
-		y = generateRandom(0, screenHeigth);
+		x = generateRandom(0, SCREEN_WIDTH);
+		y = generateRandom(0, SCREEN_HEIGTH);
 	}
-	else { x = screenWidth/2; y = screenHeigth/2; }
+	else { x = SCREEN_WIDTH /2; y = SCREEN_HEIGTH /2; }
 
 	birds = birdsIn;
 	id = birdId;
@@ -70,10 +70,10 @@ void Bird::Update(float deltaTime) {
 	x = x + direction.x;
 	y = y + direction.y;
 
-	if (x > screenWidth) x = x - screenWidth;
-	if (x < 0) x = x + screenWidth;
-	if (y > screenHeigth) y = y - screenHeigth;
-	if (y < 0) y = y + screenHeigth;
+	if (x > SCREEN_WIDTH) x = x - SCREEN_WIDTH;
+	if (x < 0) x = x + SCREEN_WIDTH;
+	if (y > SCREEN_HEIGTH) y = y - SCREEN_HEIGTH;
+	if (y < 0) y = y + SCREEN_HEIGTH;
 
 	Vector one = avoidCollision(getNearbyBirds(COLLISION_RADIUS));
 	Vector two = mimicDirection(getNearbyBirds(MIMIC_RADIUS));

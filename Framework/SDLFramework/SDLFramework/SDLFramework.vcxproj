@@ -85,8 +85,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Artist.cpp" />
+    <ClCompile Include="ArtistState.cpp" />
+    <ClCompile Include="ArtistWaitState.cpp" />
+    <ClCompile Include="ArtistWanderState.cpp" />
     <ClCompile Include="Bird.cpp" />
     <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -97,6 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Artist.h" />
+    <ClInclude Include="ArtistState.h" />
+    <ClInclude Include="ArtistWaitState.h" />
+    <ClInclude Include="ArtistWanderState.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />

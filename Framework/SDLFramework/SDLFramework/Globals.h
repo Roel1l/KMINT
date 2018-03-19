@@ -1,10 +1,11 @@
 #pragma once
 #include <random>
 
-#ifndef GLOBALS
-#define GLOBALS
-static int GLOBAL_ACTION_TIMER = 0;
-static int GLOBAL_SPEED = 60.0;
+extern double GLOBAL_SPEED;
+extern bool SHOW_PATH;
+
+const int SCREEN_WIDTH = 1280;
+const int SCREEN_HEIGTH = 820;
 
 static std::random_device rd;
 static int generateRandom(int min, int max) {
@@ -14,5 +15,3 @@ static int generateRandom(int min, int max) {
 	auto random_integer = uni(rng);
 	return random_integer;
 }
-
-#endif

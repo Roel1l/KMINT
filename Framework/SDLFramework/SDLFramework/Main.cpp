@@ -26,7 +26,13 @@ int main(int args[])
 	map->initTileNeighbours();
 	
 	Artist* axel_tulp = new Artist(map);
+	Artist* frans_sloper = new Artist(map);
+
+	axel_tulp->setColor(Color(0, 0, 102, 255));
+	frans_sloper->setColor(Color(255, 255, 0, 255));
+
 	application->AddRenderable(axel_tulp);
+	application->AddRenderable(frans_sloper);
 
 #pragma region Fans
 	std::vector<Bird*>* birds = new vector<Bird*>;
@@ -41,9 +47,10 @@ int main(int args[])
 
 #pragma endregion
 
+	uint32_t msTimeOfLastButtonPressed = 0;
+
 	while (application->IsRunning())
 	{
-		GLOBAL_ACTION_TIMER = GLOBAL_ACTION_TIMER >= GLOBAL_SPEED ? 0 : GLOBAL_ACTION_TIMER + 1;
 		application->StartTick();
 
 #pragma region Handling Key Events
@@ -58,12 +65,16 @@ int main(int args[])
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.scancode) {
 				case SDL_SCANCODE_PAGEUP:
-					GLOBAL_SPEED--;
-					LOG("GLOBAL_SPEED SET TO: " + std::to_string(GLOBAL_SPEED));
+					GLOBAL_SPEED += 0.1;
 					break;
 				case SDL_SCANCODE_PAGEDOWN:
-					GLOBAL_SPEED++;
-					LOG("GLOBAL_SPEED SET TO: " + std::to_string(GLOBAL_SPEED));
+					GLOBAL_SPEED = GLOBAL_SPEED <= 0 ? 0 : GLOBAL_SPEED - 0.1;
+					break;
+				case SDL_SCANCODE_P:
+					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+						SHOW_PATH = !SHOW_PATH;
+						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+					}
 					break;
 				default:
 					break;
@@ -75,13 +86,21 @@ int main(int args[])
 		}
 #pragma endregion
 
-		//application->SetColor(Color(0, 0, 0, 255));
-		//application->DrawText("Welcome to KMint", 400, 300);
-
 		map->drawMap(application);
 
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
+
+		application->SetColor(Color(0, 0, 0, 255));
+		application->DrawText("Money Axel Tulp: " + std::to_string(axel_tulp->money), 100, 740);
+		application->DrawText("Money Frans Sloper: " + std::to_string(axel_tulp->money), 100, 760);
+		application->DrawText("Money Johnnie Smith: " + std::to_string(axel_tulp->money), 100, 780);
+		application->DrawText("Money André Konijnes: " + std::to_string(axel_tulp->money), 100, 800);
+
+		application->DrawText("Simulation Speed: " + std::to_string(GLOBAL_SPEED), 400, 740);
+		application->DrawText("Show Path (P): " + std::to_string(SHOW_PATH), 400, 760);
+
+		application->SetColor(Color(255, 255, 255, 255));
 		application->EndTick();
 	}
 
@@ -91,6 +110,6 @@ int main(int args[])
 	}
 	delete birds;
 	delete map;
-	//delete axel_tulp;
+	delete axel_tulp;
 	return EXIT_SUCCESS;
 }

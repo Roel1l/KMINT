@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "FWApplication.h"
+#include "Globals.h"
 
 class Tile
 {

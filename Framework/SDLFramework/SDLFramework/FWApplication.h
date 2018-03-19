@@ -3,6 +3,7 @@
 #include <functional>
 #include <cstdint>
 #include <vector>
+#include "Globals.h"
 
 class IGameObject;
 struct SDL_Renderer;
@@ -44,7 +45,7 @@ struct Color
 class FWApplication
 {
 public:
-	FWApplication(int offsetX = 50, int offsetY = 50, int width = 1280, int height = 720);
+	FWApplication(int offsetX = 50, int offsetY = 50, int width = SCREEN_WIDTH, int height = SCREEN_HEIGTH);
 	~FWApplication();
 
 	void SetTargetFPS(unsigned short target);

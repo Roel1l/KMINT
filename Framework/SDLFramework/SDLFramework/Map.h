@@ -29,5 +29,9 @@ public:
 	double getDistance(Tile * A, Tile * B);
 
 	std::vector<std::vector<Tile*>> grid;
+
+	std::vector<std::tuple<int, int>> walkableTileIndexes;
+	std::vector<std::tuple<int, int>> shopTileIndexes;
+	std::vector<std::tuple<int, int>> solidTileIndexes;
 };
 

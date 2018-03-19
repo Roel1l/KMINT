@@ -13,14 +13,26 @@
     <ClCompile Include="Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="Artist.cpp">
+      <Filter>Artist</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtistState.cpp">
+      <Filter>Artist</Filter>
+    </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Main</Filter>
+      <Filter>Map</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="Artist.cpp">
-      <Filter>Main</Filter>
+    <ClCompile Include="ArtistWaitState.cpp">
+      <Filter>Artist\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtistWanderState.cpp">
+      <Filter>Artist\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -42,17 +54,26 @@
     <ClInclude Include="FlockingGlobals.h">
       <Filter>Flocking</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="Tile.h">
+    <ClInclude Include="Globals.h">
       <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="Artist.h">
-      <Filter>Main</Filter>
+      <Filter>Artist</Filter>
     </ClInclude>
-    <ClInclude Include="Globals.h">
-      <Filter>Main</Filter>
+    <ClInclude Include="ArtistState.h">
+      <Filter>Artist</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtistWaitState.h">
+      <Filter>Artist\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtistWanderState.h">
+      <Filter>Artist\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +85,15 @@
     </Filter>
     <Filter Include="Main">
       <UniqueIdentifier>{d370eed9-4e42-40b3-88a1-8cb41636d702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Artist">
+      <UniqueIdentifier>{aae1ef29-ae10-4872-97a9-d26a957c4db2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{1060ea23-bb69-426e-8ac7-7fbd76aeb5a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Artist\States">
+      <UniqueIdentifier>{19820e2d-e3e7-4e6d-8523-1910baaed686}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

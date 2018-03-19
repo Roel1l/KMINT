@@ -1,12 +1,19 @@
 #include "Artist.h"
+#include "ArtistWanderState.h"
 
 void Artist::Update(float deltaTime)
 {
-	//if (GLOBAL_ACTION_TIMER == 0 || GLOBAL_ACTION_TIMER == GLOBAL_SPEED / 2) {
-		move();
-	//}
+	uint32_t msTimeCurrent = mApplication->GetTimeSinceStartedMS();
 
-	mApplication->SetColor(Color(0, 0, 102, 255));
+	if (msTimeCurrent - msTimeOfLastAction >= msTimeBetweenActions * GLOBAL_SPEED) {
+		msTimeOfLastAction = msTimeCurrent;
+		state->checkState();
+		state->Update(deltaTime);
+		wait = wait <= 0 ? 0 : wait - 1;
+		if(wait < 1) move();
+	}
+
+	mApplication->SetColor(color);
 	mApplication->DrawCircle(currentTile->absoluteX + 10, currentTile->absoluteY + 10, 10, true);
 }
 
@@ -14,22 +21,16 @@ void Artist::Update(float deltaTime)
 Artist::Artist(Map * mapIn)
 {
 	map = mapIn; 
-	currentTile = map->getTile(4, 7);
+	state = new ArtistWanderState(this);
+	currentTile = map->getTile(1, 1);
 }
 
 void Artist::move() {
-	if (path.size() > 0) {
-		currentTile = path[0];
-		currentTile->partOfPath = false;
-		path.erase(path.begin());
-	}
-	else {
-		Tile* target = map->getTile(map->xMax -2, map->yMax -2);
-		path = map->findPath(currentTile, target);
-		for each (Tile* t in path) t->partOfPath = true;
-	}
+	state->move();
 }
 
 Artist::~Artist()
 {
+	delete state;
+	SDL_DestroyTexture(texture);
 }
