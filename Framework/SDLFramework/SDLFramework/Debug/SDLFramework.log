@@ -1,13 +1,4 @@
-﻿  ArtistWanderState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistwanderstate.cpp(23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Artist.cpp
-  Generating Code...
-  Compiling...
-  Main.cpp
+﻿  Main.cpp
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\flockingglobals.h(17): warning C4305: 'initializing': truncation from 'double' to 'bool'
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  ArtistWaitState.cpp
-  ArtistState.cpp
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

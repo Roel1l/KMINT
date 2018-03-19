@@ -27,10 +27,13 @@ int main(int args[])
 	
 	Artist* axel_tulp = new Artist(map);
 	Artist* frans_sloper = new Artist(map);
+	Artist* manager = new Artist(map);
 
 	axel_tulp->setColor(Color(0, 0, 102, 255));
 	frans_sloper->setColor(Color(255, 255, 0, 255));
+	manager->setColor(Color(0, 255, 255, 255));
 
+	application->AddRenderable(manager);
 	application->AddRenderable(axel_tulp);
 	application->AddRenderable(frans_sloper);
 
@@ -93,9 +96,9 @@ int main(int args[])
 
 		application->SetColor(Color(0, 0, 0, 255));
 		application->DrawText("Money Axel Tulp: " + std::to_string(axel_tulp->money), 100, 740);
-		application->DrawText("Money Frans Sloper: " + std::to_string(axel_tulp->money), 100, 760);
-		application->DrawText("Money Johnnie Smith: " + std::to_string(axel_tulp->money), 100, 780);
-		application->DrawText("Money André Konijnes: " + std::to_string(axel_tulp->money), 100, 800);
+		application->DrawText("Money Frans Sloper: " + std::to_string(frans_sloper->money), 100, 760);
+		application->DrawText("Money Johnnie Smith: " + std::to_string(0), 100, 780);
+		application->DrawText("Money André Konijnes: " + std::to_string(0), 100, 800);
 
 		application->DrawText("Simulation Speed: " + std::to_string(GLOBAL_SPEED), 400, 740);
 		application->DrawText("Show Path (P): " + std::to_string(SHOW_PATH), 400, 760);
@@ -111,5 +114,7 @@ int main(int args[])
 	delete birds;
 	delete map;
 	delete axel_tulp;
+	delete frans_sloper;
+	delete manager;
 	return EXIT_SUCCESS;
 }

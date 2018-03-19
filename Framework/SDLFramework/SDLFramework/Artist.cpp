@@ -22,7 +22,8 @@ Artist::Artist(Map * mapIn)
 {
 	map = mapIn; 
 	state = new ArtistWanderState(this);
-	currentTile = map->getTile(1, 1);
+	int random = generateRandom(0, map->walkableTileIndexes.size() - 1);
+	currentTile = map->getTile(std::get<0>(map->walkableTileIndexes[random]), std::get<1>(map->walkableTileIndexes[random]));
 }
 
 void Artist::move() {
