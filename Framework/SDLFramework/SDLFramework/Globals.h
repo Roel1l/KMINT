@@ -1,12 +1,24 @@
 #pragma once
 #include <random>
 
-extern double GLOBAL_SPEED;
-extern bool SHOW_PATH;
+const int AMOUNT_OF_ARTISTS = 4;
 
+// Game speed
+extern double GLOBAL_SPEED;
+
+// Pathing
+extern bool SHOW_PATH;
+extern bool SHOW_AXEL_PATH;
+extern bool SHOW_FRANS_PATH;
+extern bool SHOW_JOHNNIE_PATH;
+extern bool SHOW_ANDRE_PATH;
+extern bool SHOW_MANAGER_PATH;
+
+// Screen
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGTH = 820;
 
+// Functions
 static std::random_device rd;
 static int generateRandom(int min, int max) {
 	std::mt19937 rng(rd());

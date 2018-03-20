@@ -2,7 +2,6 @@
 #include "Artist.h"
 #include "Globals.h"
 
-
 class Artist;
 
 class ArtistState
@@ -14,8 +13,10 @@ public:
 
 	virtual void Update(float deltaTime) {};
 	virtual void move() {};
+	virtual bool doesArtistNeedMoney() { return false; };
 	void checkState();
 
 	Artist* artist;
+
 };
 

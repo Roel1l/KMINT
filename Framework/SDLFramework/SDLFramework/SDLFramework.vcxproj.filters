@@ -34,6 +34,21 @@
     <ClCompile Include="ArtistWanderState.cpp">
       <Filter>Artist\States</Filter>
     </ClCompile>
+    <ClCompile Include="ManagerWanderState.cpp">
+      <Filter>Manager\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagerState.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ArtistShopState.cpp">
+      <Filter>Artist\States</Filter>
+    </ClCompile>
+    <ClCompile Include="ManagerVisitArtistState.cpp">
+      <Filter>Manager\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bird.h">
@@ -75,6 +90,21 @@
     <ClInclude Include="ArtistWanderState.h">
       <Filter>Artist\States</Filter>
     </ClInclude>
+    <ClInclude Include="ManagerWanderState.h">
+      <Filter>Manager\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerState.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtistShopState.h">
+      <Filter>Artist\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ManagerVisitArtistState.h">
+      <Filter>Manager\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -94,6 +124,12 @@
     </Filter>
     <Filter Include="Artist\States">
       <UniqueIdentifier>{19820e2d-e3e7-4e6d-8523-1910baaed686}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{289d91a6-74b7-40ec-93b1-f3732f92a268}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\States">
+      <UniqueIdentifier>{f9dda8eb-f528-42aa-96b8-8803e9a5dad6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

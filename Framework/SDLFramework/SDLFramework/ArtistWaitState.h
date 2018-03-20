@@ -4,7 +4,11 @@
 class ArtistWaitState : public ArtistState
 {
 public:
-	ArtistWaitState();
+	ArtistWaitState(Artist* artistIn);
+
+	void Update(float deltaTime);
+	void move();
+	bool doesArtistNeedMoney() { return false; }
+
 	~ArtistWaitState();
 };
-

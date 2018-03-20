@@ -8,6 +8,7 @@ public:
 
 	void Update(float deltaTime);
 	void move();
+	bool doesArtistNeedMoney() { return artist->money < 100; }
 
 	~ArtistWanderState();
 };

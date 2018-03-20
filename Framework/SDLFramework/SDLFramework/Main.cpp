@@ -10,43 +10,70 @@
 #include "Map.h"
 #include "Artist.h"
 #include "Globals.h"
+#include "Manager.h"
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
 
 using namespace std;
 
 int main(int args[])
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // leak dump enabled
+
 	auto application = new FWApplication();
 	if (!application->GetWindow()){ LOG("Couldn't create window..."); return EXIT_FAILURE; }
 
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
+#pragma region Init
+
 	Map* map = new Map();
 	map->loadMap();
 	map->initTileNeighbours();
-	
-	Artist* axel_tulp = new Artist(map);
-	Artist* frans_sloper = new Artist(map);
-	Artist* manager = new Artist(map);
 
-	axel_tulp->setColor(Color(0, 0, 102, 255));
-	frans_sloper->setColor(Color(255, 255, 0, 255));
-	manager->setColor(Color(0, 255, 255, 255));
+	std::vector<Artist*> artists;
 
+	for (int i = 0; i <= AMOUNT_OF_ARTISTS - 1; i++) {
+		artists.push_back(new Artist(map));
+
+		if (i == 0) {
+			artists[i]->name = "Axel Tulp";
+			artists[i]->setColor(Color(0, 0, 102, 255));
+		}
+		if (i == 1) {
+			artists[i]->name = "Johnnie Smith";
+			artists[i]->setColor(Color(0, 0, 31, 255));
+			artists[i]->hostile = true;
+		}
+		if (i == 2) {
+			artists[i]->name = "Andre Konijnes";
+			artists[i]->setColor(Color(51, 255, 51, 255));
+		}
+		if (i == 3) {
+			artists[i]->name = "Frans Sloper";
+			artists[i]->setColor(Color(255, 255, 0, 255));
+		}
+	}
+
+	Manager* manager = new Manager(map);
+	manager->setColor(Color(255, 255, 255, 255));
+	manager->artists = artists;
+	for each (Artist* artist in artists) application->AddRenderable(artist);
 	application->AddRenderable(manager);
-	application->AddRenderable(axel_tulp);
-	application->AddRenderable(frans_sloper);
+
+#pragma endregion
 
 #pragma region Fans
-	std::vector<Bird*>* birds = new vector<Bird*>;
-	int lastId = 0;
+	//std::vector<Bird*>* birds = new vector<Bird*>;
+	//int lastId = 0;
 
-	for (int i = AMOUNT_OF_BIRDS; i > 0; i--) {
-		Bird* bird = new Bird(i, birds);
-		birds->push_back(bird);
-		application->AddRenderable(bird);
-		lastId++;
-	}
+	//for (int i = AMOUNT_OF_BIRDS; i > 0; i--) {
+	//	Bird* bird = new Bird(i, birds);
+	//	birds->push_back(bird);
+	//	application->AddRenderable(bird);
+	//	lastId++;
+	//}
 
 #pragma endregion
 
@@ -55,6 +82,18 @@ int main(int args[])
 	while (application->IsRunning())
 	{
 		application->StartTick();
+
+		if (SHOW_PATH) {
+			for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) tile->partOfPath = false;
+			for (int i = 0; i < artists.size(); i++) 
+			{
+				if (i == 0 && SHOW_AXEL_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+				if (i == 1 && SHOW_JOHNNIE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+				if (i == 2 && SHOW_ANDRE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+				if (i == 3 && SHOW_FRANS_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+			}
+			if(SHOW_MANAGER_PATH) for each (Tile* t in manager->path) t->partOfPath = true;
+		}
 
 #pragma region Handling Key Events
 		SDL_Event event;
@@ -79,6 +118,36 @@ int main(int args[])
 						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
 					}
 					break;
+				case SDL_SCANCODE_3:
+					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+						SHOW_ANDRE_PATH = !SHOW_ANDRE_PATH;
+						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+					}
+					break;
+				case SDL_SCANCODE_1:
+					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+						SHOW_AXEL_PATH = !SHOW_AXEL_PATH;
+						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+					}
+					break;
+				case SDL_SCANCODE_4:
+					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+						SHOW_FRANS_PATH = !SHOW_FRANS_PATH;
+						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+					}
+					break;
+				case SDL_SCANCODE_2:
+					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+						SHOW_JOHNNIE_PATH = !SHOW_JOHNNIE_PATH;
+						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+					}
+					break;
+				case SDL_SCANCODE_0:
+					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+						SHOW_MANAGER_PATH = !SHOW_MANAGER_PATH;
+						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+					}
+					break;
 				default:
 					break;
 				}
@@ -90,15 +159,13 @@ int main(int args[])
 #pragma endregion
 
 		map->drawMap(application);
-
 		application->UpdateGameObjects();
 		application->RenderGameObjects();
 
 		application->SetColor(Color(0, 0, 0, 255));
-		application->DrawText("Money Axel Tulp: " + std::to_string(axel_tulp->money), 100, 740);
-		application->DrawText("Money Frans Sloper: " + std::to_string(frans_sloper->money), 100, 760);
-		application->DrawText("Money Johnnie Smith: " + std::to_string(0), 100, 780);
-		application->DrawText("Money André Konijnes: " + std::to_string(0), 100, 800);
+		for (int i = 0; i < artists.size(); i++) {
+			application->DrawText(artists[i]->name + " money: " + std::to_string(artists[i]->money), 100, 740 + 20 * i);
+		}
 
 		application->DrawText("Simulation Speed: " + std::to_string(GLOBAL_SPEED), 400, 740);
 		application->DrawText("Show Path (P): " + std::to_string(SHOW_PATH), 400, 760);
@@ -107,14 +174,16 @@ int main(int args[])
 		application->EndTick();
 	}
 
-	for each (Bird* var in *birds)
-	{
-		delete var;
-	}
-	delete birds;
+	//for each (Bird* var in *birds)
+	//{
+	//	delete var;
+	//}
+	//delete birds;
 	delete map;
-	delete axel_tulp;
-	delete frans_sloper;
+	for each (Artist* artist in artists) delete artist;
 	delete manager;
+	delete application;
+
+	//int* i = new int(23);
 	return EXIT_SUCCESS;
 }

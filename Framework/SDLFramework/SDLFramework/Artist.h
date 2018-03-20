@@ -6,18 +6,22 @@
 #include "Globals.h"
 #include "ArtistState.h"
 
-
+enum class ARTIST_STATE_CHANGE { NO_STATE_CHANGE, START_WANDERING, MANAGER_IS_COMING, GO_TO_SHOP };
 class ArtistState;
 
 class Artist : public IGameObject
 {
 public:
+
+	std::string name = "NO NAME";
+
 	Tile* currentTile;
 	Map* map;
 	SDL_Texture *texture;
 	std::vector<Tile*> path;
 	ArtistState* state;
 	Color color = Color(0, 0, 102, 255);
+	bool hostile = false;
 
 	int money = 1000;
 	int wait = 0;
@@ -27,11 +31,11 @@ public:
 	Artist(Map* mapIn);
 	void setColor(Color colorIn) { color = colorIn; }
 	void move();
+	bool doesArtistNeedMoney();
 	void changeState(ArtistState* stateIn) { state = stateIn; }
 	~Artist();
 	void Update(float deltaTime);
 
-private:
-	int actionTimer = 0;
+	ARTIST_STATE_CHANGE stateChange = ARTIST_STATE_CHANGE::NO_STATE_CHANGE;
 };
 

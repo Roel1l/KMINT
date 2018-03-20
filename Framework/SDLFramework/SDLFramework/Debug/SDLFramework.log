@@ -1,4 +1,6 @@
 ﻿  Main.cpp
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\flockingglobals.h(17): warning C4305: 'initializing': truncation from 'double' to 'bool'
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(88): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(166): warning C4018: '<': signed/unsigned mismatch
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

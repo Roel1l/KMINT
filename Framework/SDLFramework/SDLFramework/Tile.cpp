@@ -10,6 +10,10 @@ double Tile::weight()
 	case '1': return 1.0;
 	case '2': return 2.0;
 	case '3': return 8.0;
+	case 'L': return 3.0;
+	case 'N': return 3.0;
+	case 'P': return 3.0;
+	case 'C': return 3.0;
 	default: 1.0;
 	}
 }
@@ -36,5 +40,16 @@ Color Tile::color()
 	case 'P': return Color(0, 0, 255, 255);
 	case 'C': return Color(128, 0, 128, 255);
 	default: return Color(0, 0, 0, 255);
+	}
+}
+
+int Tile::getPayOut()
+{
+	switch (type) {
+	case 'L': return generateRandom(200, 300);
+	case 'N': return generateRandom(500, 700);
+	case 'P': return 500;
+	case 'C': return generateRandom(300, 1000);
+	default: return 0;
 	}
 }

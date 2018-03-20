@@ -5,7 +5,7 @@ void Artist::Update(float deltaTime)
 {
 	uint32_t msTimeCurrent = mApplication->GetTimeSinceStartedMS();
 
-	if (msTimeCurrent - msTimeOfLastAction >= msTimeBetweenActions * GLOBAL_SPEED) {
+	if (msTimeCurrent - msTimeOfLastAction >= (double)msTimeBetweenActions * GLOBAL_SPEED) {
 		msTimeOfLastAction = msTimeCurrent;
 		state->checkState();
 		state->Update(deltaTime);
@@ -28,6 +28,11 @@ Artist::Artist(Map * mapIn)
 
 void Artist::move() {
 	state->move();
+}
+
+bool Artist::doesArtistNeedMoney()
+{
+	return state->doesArtistNeedMoney();
 }
 
 Artist::~Artist()

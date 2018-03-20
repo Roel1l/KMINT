@@ -32,6 +32,8 @@ public:
 	Color color();
 	bool partOfPath = false;
 
+	int getPayOut();
+
 	char type;
 };
 
