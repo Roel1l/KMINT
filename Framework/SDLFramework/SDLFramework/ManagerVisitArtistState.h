@@ -4,7 +4,7 @@
 class ManagerVisitArtistState : public ManagerState
 {
 public:
-	ManagerVisitArtistState(Manager* managerIn) { manager = managerIn; }
+	ManagerVisitArtistState(Manager* managerIn);
 
 	void Update(float deltaTime);
 	void move();

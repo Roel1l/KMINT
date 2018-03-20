@@ -5,7 +5,7 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
-#include "Bird.h"
+#include "Fan.h"
 #include "FlockingGlobals.h"
 #include "Map.h"
 #include "Artist.h"
@@ -65,15 +65,16 @@ int main(int args[])
 #pragma endregion
 
 #pragma region Fans
-	//std::vector<Bird*>* birds = new vector<Bird*>;
-	//int lastId = 0;
 
-	//for (int i = AMOUNT_OF_BIRDS; i > 0; i--) {
-	//	Bird* bird = new Bird(i, birds);
-	//	birds->push_back(bird);
-	//	application->AddRenderable(bird);
-	//	lastId++;
-	//}
+	std::vector<Fan*>* fans = new vector<Fan*>;
+	int lastId = 0;
+
+	for (int i = AMOUNT_OF_FANS; i > 0; i--) {
+		Fan* fan = new Fan(i, fans);
+		fans->push_back(fan);
+		application->AddRenderable(fan);
+		lastId++;
+	}
 
 #pragma endregion
 
@@ -174,11 +175,8 @@ int main(int args[])
 		application->EndTick();
 	}
 
-	//for each (Bird* var in *birds)
-	//{
-	//	delete var;
-	//}
-	//delete birds;
+	for each (Fan* fan in *fans) delete fan;
+	delete fans;
 	delete map;
 	for each (Artist* artist in artists) delete artist;
 	delete manager;

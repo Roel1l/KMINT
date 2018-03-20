@@ -89,7 +89,7 @@
     <ClCompile Include="ArtistState.cpp" />
     <ClCompile Include="ArtistWaitState.cpp" />
     <ClCompile Include="ArtistWanderState.cpp" />
-    <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -110,7 +110,7 @@
     <ClInclude Include="ArtistState.h" />
     <ClInclude Include="ArtistWaitState.h" />
     <ClInclude Include="ArtistWanderState.h" />
-    <ClInclude Include="Bird.h" />
+    <ClInclude Include="Fan.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="FlockingGlobals.h" />

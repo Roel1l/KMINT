@@ -14,7 +14,7 @@ void Manager::Update(float deltaTime)
 	}
 
 	mApplication->SetColor(color);
-	mApplication->DrawRect(currentTile->absoluteX, currentTile->absoluteY, 20, 20, true);
+	mApplication->DrawRect(currentTile->absoluteX + 1, currentTile->absoluteY + 1, 18, 18, true);
 }
 
 Manager::Manager(Map * mapIn)

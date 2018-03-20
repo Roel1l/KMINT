@@ -1,11 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Bird.cpp">
-      <Filter>Flocking</Filter>
-    </ClCompile>
     <ClCompile Include="Vector.cpp">
-      <Filter>Flocking</Filter>
+      <Filter>Fan</Filter>
     </ClCompile>
     <ClCompile Include="FWApplication.cpp">
       <Filter>Main</Filter>
@@ -49,11 +46,11 @@
     <ClCompile Include="ManagerVisitArtistState.cpp">
       <Filter>Manager\States</Filter>
     </ClCompile>
+    <ClCompile Include="Fan.cpp">
+      <Filter>Fan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bird.h">
-      <Filter>Flocking</Filter>
-    </ClInclude>
     <ClInclude Include="Config.h">
       <Filter>Main</Filter>
     </ClInclude>
@@ -64,10 +61,10 @@
       <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
-      <Filter>Flocking</Filter>
+      <Filter>Fan</Filter>
     </ClInclude>
     <ClInclude Include="FlockingGlobals.h">
-      <Filter>Flocking</Filter>
+      <Filter>Fan</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
       <Filter>Main</Filter>
@@ -105,14 +102,14 @@
     <ClInclude Include="ManagerVisitArtistState.h">
       <Filter>Manager\States</Filter>
     </ClInclude>
+    <ClInclude Include="Fan.h">
+      <Filter>Fan</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Flocking">
-      <UniqueIdentifier>{15d45753-6848-4dbf-87dc-bfe090e4fe3c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main">
       <UniqueIdentifier>{d370eed9-4e42-40b3-88a1-8cb41636d702}</UniqueIdentifier>
     </Filter>
@@ -130,6 +127,9 @@
     </Filter>
     <Filter Include="Manager\States">
       <UniqueIdentifier>{f9dda8eb-f528-42aa-96b8-8803e9a5dad6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fan">
+      <UniqueIdentifier>{15d45753-6848-4dbf-87dc-bfe090e4fe3c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

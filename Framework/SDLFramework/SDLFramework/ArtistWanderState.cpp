@@ -14,10 +14,12 @@ void ArtistWanderState::move()
 		artist->path = artist->map->findPath(artist->currentTile, target);
 	}
 
-	artist->money = artist->money <= 0 ? 0 : artist->money - 20;
-	artist->currentTile = artist->path[0];
-	artist->path.erase(artist->path.begin());
-	artist->wait = artist->currentTile->weight();
+	if (artist->path.size() > 0) {
+		artist->money = artist->money <= 0 ? 0 : artist->money - 20;
+		artist->currentTile = artist->path[0];
+		artist->path.erase(artist->path.begin());
+		artist->wait = artist->currentTile->weight();
+	}
 }
 
 ArtistWanderState::~ArtistWanderState()

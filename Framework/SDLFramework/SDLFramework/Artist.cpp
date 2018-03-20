@@ -14,7 +14,8 @@ void Artist::Update(float deltaTime)
 	}
 
 	mApplication->SetColor(color);
-	mApplication->DrawCircle(currentTile->absoluteX + 10, currentTile->absoluteY + 10, 10, true);
+	//mApplication->DrawCircle(currentTile->absoluteX + 10, currentTile->absoluteY + 10, 10, true);
+	mApplication->DrawRect(currentTile->absoluteX + 2, currentTile->absoluteY + 2, 16, 16, true);
 }
 
 

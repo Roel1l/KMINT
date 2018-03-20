@@ -1,6 +1,7 @@
-﻿  Main.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\flockingglobals.h(17): warning C4305: 'initializing': truncation from 'double' to 'bool'
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(88): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(166): warning C4018: '<': signed/unsigned mismatch
+﻿  ManagerWanderState.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managerwanderstate.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  ArtistWanderState.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistwanderstate.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

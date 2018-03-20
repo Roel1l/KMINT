@@ -19,9 +19,11 @@ void ManagerWanderState::move()
 	}
 
 	// Moving 1 step
-	manager->currentTile = manager->path[0];
-	manager->path.erase(manager->path.begin());
-	manager->wait = manager->currentTile->weight();
+	if (manager->path.size() > 0) {
+		manager->currentTile = manager->path[0];
+		manager->path.erase(manager->path.begin());
+		manager->wait = manager->currentTile->weight();
+	}
 
 	//Check if an artist needs help
 	for each(Artist* artist in manager->artists) {
