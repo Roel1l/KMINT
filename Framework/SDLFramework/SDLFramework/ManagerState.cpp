@@ -14,10 +14,12 @@ void ManagerState::checkState()
 	case MANAGER_STATE_CHANGE::START_WANDERING:
 		manager->stateChange = MANAGER_STATE_CHANGE::NO_STATE_CHANGE;
 		manager->changeState(new ManagerWanderState(manager));
+		delete this;
 		break;
 	case MANAGER_STATE_CHANGE::GO_TO_ARTIST:
 		manager->stateChange = MANAGER_STATE_CHANGE::NO_STATE_CHANGE;
 		manager->changeState(new ManagerVisitArtistState(manager));
+		delete this;
 		break;
 	default:
 		break;

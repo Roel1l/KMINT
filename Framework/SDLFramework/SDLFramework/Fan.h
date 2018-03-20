@@ -31,7 +31,7 @@ public:
 
 	bool AVOID_COLLISION = true;
 	double COLLISION_RADIUS = 30;
-	double COLLISION_INTENSITY = 1.5;
+	double COLLISION_INTENSITY = 1.0;
 
 	bool MIMIC_DIRECTION = true;
 	double MIMIC_RADIUS = 100;

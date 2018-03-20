@@ -53,10 +53,14 @@ void Fan::Update(float deltaTime) {
 		canMove = false;
 	}
 
-	if (canMove) {
-		x = x + direction.x;
-		y = y + direction.y;
+	if (!canMove) {
+		direction.x = -direction.x;
+		direction.y = -direction.y;
 	}
+
+	x = x + direction.x;
+	y = y + direction.y;
+
 
 	Vector one = avoidCollision(getNearbyFans(COLLISION_RADIUS));
 	Vector two = mimicDirection(getNearbyFans(MIMIC_RADIUS));
