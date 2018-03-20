@@ -113,7 +113,6 @@
     <ClInclude Include="Fan.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />
-    <ClInclude Include="FlockingGlobals.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Manager.h" />

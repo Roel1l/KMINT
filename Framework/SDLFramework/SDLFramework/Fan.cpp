@@ -3,34 +3,26 @@
 #include <chrono>
 #include <thread>
 #include <iostream>
-#include "FlockingGlobals.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-Fan::Fan(int fanId, std::vector<Fan*>* fansIn)
+Fan::Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn)
 {
-	if (RANDOM_SPAWN) {
-		x = generateRandom(0, SCREEN_WIDTH);
-		y = generateRandom(0, SCREEN_HEIGTH);
-	}
-	else { x = SCREEN_WIDTH /2; y = SCREEN_HEIGTH /2; }
-
 	fans = fansIn;
 	id = fanId;
+	map = mapIn;
 
-	init();
+	int random = generateRandom(0, map->walkableTileIndexes.size() - 1);
+	Tile* spawnTile = map->getTile(std::get<0>(map->walkableTileIndexes[random]), std::get<1>(map->walkableTileIndexes[random]));
+
+	x = spawnTile->absoluteX + 7;
+	y = spawnTile->absoluteY + 8;
 	
-}
 
-Fan::Fan(int fanId, std::vector<Fan*>* fansIn, int xIn, int yIn)
-{
-	x = xIn;
-	y = yIn;
-
-	fans = fansIn;
-	id = fanId;
-
-	init();
+	int a = generateRandom(-1000, 1000);
+	int b = generateRandom(-1000, 1000);
+	direction.setRichting(a, b);
+	
 }
 
 Fan::~Fan()
@@ -38,19 +30,7 @@ Fan::~Fan()
 	SDL_DestroyTexture(texture);
 }
 
-
-void Fan::init() {
-
-	int a = generateRandom(-1000, 1000);
-	int b = generateRandom(-1000, 1000);
-	direction.setRichting(a, b);
-}
-
-
 void Fan::Update(float deltaTime) {
-
-	double overstaande = direction.y;
-	double lange = direction.getLength();
 
 	double currVectorLength = direction.getLength();
 	
@@ -59,13 +39,24 @@ void Fan::Update(float deltaTime) {
 		direction.y = direction.y / currVectorLength * SPEED;
 	}
 
-	x = x + direction.x;
-	y = y + direction.y;
+	bool canMove = true;
 
-	if (x > SCREEN_WIDTH) x = x - SCREEN_WIDTH;
-	if (x < 0) x = x + SCREEN_WIDTH;
-	if (y > SCREEN_HEIGTH) y = y - SCREEN_HEIGTH;
-	if (y < 0) y = y + SCREEN_HEIGTH;
+	for each (std::tuple<int,int> coordinate in map->solidTileIndexes)
+	{
+		Tile* tile = map->getTile(std::get<0>(coordinate), std::get<1>(coordinate));
+		if (
+			x + direction.x + 4 >= tile->absoluteX && 
+			x + direction.x <= tile->absoluteX + 20 &&
+			y + direction.y + 4 >= tile->absoluteY && 
+			y + direction.y <= tile->absoluteY + 20
+			) 
+		canMove = false;
+	}
+
+	if (canMove) {
+		x = x + direction.x;
+		y = y + direction.y;
+	}
 
 	Vector one = avoidCollision(getNearbyFans(COLLISION_RADIUS));
 	Vector two = mimicDirection(getNearbyFans(MIMIC_RADIUS));

@@ -1,7 +1,8 @@
 #pragma once
 #include <random>
 
-const int AMOUNT_OF_ARTISTS = 4;
+const int AMOUNT_OF_ARTISTS = 4; // Max = 4;
+const int AMOUNT_OF_FANS = 100;
 
 // Game speed
 extern double GLOBAL_SPEED;

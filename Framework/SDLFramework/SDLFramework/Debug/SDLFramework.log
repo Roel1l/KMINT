@@ -1,7 +1,7 @@
-﻿  ManagerWanderState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managerwanderstate.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  ArtistWanderState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistwanderstate.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  ManagerVisitArtistState.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managervisitartiststate.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  ArtistShopState.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistshopstate.cpp(26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   Generating Code...
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

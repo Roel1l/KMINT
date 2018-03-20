@@ -19,10 +19,12 @@ void ArtistShopState::Update(float deltaTime)
 void ArtistShopState::move()
 {
 	// Walk a step
-	artist->money = artist->money <= 0 ? 0 : artist->money - 20;
-	artist->currentTile = artist->path[0];
-	artist->path.erase(artist->path.begin());
-	artist->wait = artist->currentTile->weight();
+	if (artist->path.size() > 0) {
+		artist->money = artist->money <= 0 ? 0 : artist->money - 20;
+		artist->currentTile = artist->path[0];
+		artist->path.erase(artist->path.begin());
+		artist->wait = artist->currentTile->weight();
+	}
 
 	//Found Store
 	if (artist->path.size() <= 0) {

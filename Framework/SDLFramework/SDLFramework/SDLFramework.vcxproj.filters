@@ -63,9 +63,6 @@
     <ClInclude Include="Vector.h">
       <Filter>Fan</Filter>
     </ClInclude>
-    <ClInclude Include="FlockingGlobals.h">
-      <Filter>Fan</Filter>
-    </ClInclude>
     <ClInclude Include="Globals.h">
       <Filter>Main</Filter>
     </ClInclude>

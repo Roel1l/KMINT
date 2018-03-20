@@ -6,7 +6,6 @@
 #include "SDL_timer.h"
 #include <time.h>
 #include "Fan.h"
-#include "FlockingGlobals.h"
 #include "Map.h"
 #include "Artist.h"
 #include "Globals.h"
@@ -70,7 +69,7 @@ int main(int args[])
 	int lastId = 0;
 
 	for (int i = AMOUNT_OF_FANS; i > 0; i--) {
-		Fan* fan = new Fan(i, fans);
+		Fan* fan = new Fan(i, fans, map);
 		fans->push_back(fan);
 		application->AddRenderable(fan);
 		lastId++;
