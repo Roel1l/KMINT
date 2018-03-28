@@ -76,6 +76,10 @@ FWApplication::~FWApplication()
 	SDL_Quit();
 }
 
+void FWApplication::setWindowTitle(const char* title) {
+	SDL_SetWindowTitle(mWindow, title);
+}
+
 SDL_Window * FWApplication::GetWindow() const
 {
 	return mWindow;
@@ -83,6 +87,7 @@ SDL_Window * FWApplication::GetWindow() const
 
 FWApplication * FWApplication::GetInstance()
 {
+
 	if (!mInstance)
 	{
 		new FWApplication();

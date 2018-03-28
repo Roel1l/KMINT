@@ -48,6 +48,8 @@ public:
 	FWApplication(int offsetX = 50, int offsetY = 50, int width = SCREEN_WIDTH, int height = SCREEN_HEIGTH);
 	~FWApplication();
 
+	void setWindowTitle(const char * title);
+
 	void SetTargetFPS(unsigned short target);
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////

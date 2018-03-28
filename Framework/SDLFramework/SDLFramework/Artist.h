@@ -23,6 +23,9 @@ public:
 	Color color = Color(0, 0, 102, 255);
 	bool hostile = false;
 
+	int width = 16;
+	int heigth = 16;
+
 	int money = 1000;
 	int wait = 0;
 	uint32_t msTimeBetweenActions = 1000; //Means the artist will execute an action every 1000 ms

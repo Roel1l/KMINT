@@ -66,22 +66,46 @@ int main(int args[])
 #pragma region Fans
 
 	std::vector<Fan*>* fans = new vector<Fan*>;
-	int lastId = 0;
 
-	for (int i = AMOUNT_OF_FANS; i > 0; i--) {
-		Fan* fan = new Fan(i, fans, map);
-		fans->push_back(fan);
-		application->AddRenderable(fan);
-		lastId++;
+	if (AMOUNT_OF_ARTISTS > 3) {
+		for (int i = AMOUNT_OF_FANS; i > 0; i--) {
+			Fan* fan = new Fan(i, fans, map);
+			fan->axel = artists[0];
+			fan->johnnie = artists[1];
+			fan->andre = artists[2];
+			fan->frans = artists[3];
+
+			fan->initRandomStartingValues();
+			fan->spawn();
+
+			fans->push_back(fan);
+			application->AddRenderable(fan);
+		}
 	}
-
 #pragma endregion
 
 	uint32_t msTimeOfLastButtonPressed = 0;
+	uint32_t msTimeOfLastButtonPeriodTick = 0;
+	uint32_t msTimeBetweenPeriodTicks = 1000;
+
+	int simulationNumber = 1;
+	int periodNumber = 0;
+
 
 	while (application->IsRunning())
 	{
 		application->StartTick();
+		uint32_t msTimeCurrent = application->GetTimeSinceStartedMS();
+		if (msTimeCurrent - msTimeOfLastButtonPeriodTick >= (double)msTimeBetweenPeriodTicks * GLOBAL_SPEED) {
+			msTimeOfLastButtonPeriodTick = msTimeCurrent;
+			periodNumber++;
+		}
+
+		std::string simulationText = "Simulation: " + std::to_string(simulationNumber);
+		std::string periodText = " Period: " + std::to_string(periodNumber);
+		std::string title = simulationText + periodText;
+
+		application->setWindowTitle(title.c_str());
 
 		if (SHOW_PATH) {
 			for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) tile->partOfPath = false;
