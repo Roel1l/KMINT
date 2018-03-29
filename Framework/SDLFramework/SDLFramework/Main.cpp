@@ -91,6 +91,7 @@ int main(int args[])
 	int simulationNumber = 1;
 	int periodNumber = 0;
 
+	Tile* t = map->getTileByCoordinates(1066.3529116917155, 720.78243684678728);
 
 	while (application->IsRunning())
 	{

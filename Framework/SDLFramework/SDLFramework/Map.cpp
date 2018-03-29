@@ -60,6 +60,16 @@ Tile* Map::getTile(int x, int y) {
 	return grid[x][y];
 }
 
+Tile* Map::getTileByCoordinates(double xIn, double yIn) {
+
+	int x = xIn / 20;
+	int y = yIn / 20;
+
+	if(x < xMax && y < yMax)
+	return grid[x][y];
+	else return grid[0][0];
+}
+
 void Map::initTileNeighbours() {
 	for (int x = 0; x < xMax; x++)
 	{

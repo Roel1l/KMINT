@@ -17,6 +17,8 @@ public:
 
 	Tile * getTile(int x, int y);
 
+	Tile * getTileByCoordinates(double x, double y);
+
 	void initTileNeighbours();
 
 	int xMax = 0; //Zero-based

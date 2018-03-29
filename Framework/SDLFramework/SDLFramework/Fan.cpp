@@ -261,34 +261,18 @@ Vector Fan::goToFrans() {
 }
 
 void Fan::move() {
-	bool canMoveX = true;
-	bool canMoveY = true;
+	int correctionX = x + direction.x > x ? 4 : 0;
+	int correctionY = y + direction.y > y ? 4 : 0;
 
-	std::vector<std::tuple<int, int>> tileIndexesFansCantWalk;
+	Tile * tileX = map->getTileByCoordinates(x + direction.x + correctionX, y + direction.y);
+	Tile * tileY = map->getTileByCoordinates(x, y + direction.y + correctionY);
 
-	tileIndexesFansCantWalk.insert(tileIndexesFansCantWalk.end(), map->solidTileIndexes.begin(), map->solidTileIndexes.end());
-	tileIndexesFansCantWalk.insert(tileIndexesFansCantWalk.end(), map->shopTileIndexes.begin(), map->shopTileIndexes.end());
+	bool canMoveX = tileX->type != '1' && tileX->type != '2' && tileX->type != '3' ? false : true;
 
-	//Check if trying to move in wall
-	for each (std::tuple<int, int> coordinate in tileIndexesFansCantWalk)
-	{
-		Tile* tile = map->getTile(std::get<0>(coordinate), std::get<1>(coordinate));
-		if (x + direction.x + 4 >= tile->absoluteX && x + direction.x <= tile->absoluteX + 20 && y + 4 >= tile->absoluteY && y <= tile->absoluteY + 20) {
-			canMoveX = false;
-		}
+	bool canMoveY = tileY->type != '1' && tileY->type != '2' && tileY->type != '3' ? false : true;
 
-		if (x + 4 >= tile->absoluteX && x <= tile->absoluteX + 20 && y + direction.y + 4 >= tile->absoluteY && y + direction.y <= tile->absoluteY + 20) {
-			canMoveY = false;
-		}
-
-	}
-
-	if (canMoveX) {
-		x = x + direction.x;
-	}
-	if (canMoveY) {
-		y = y + direction.y;
-	}
+	if (canMoveX) x = x + direction.x;
+	if (canMoveY) y = y + direction.y;
 }
 
 int Fan::getPointsForBeingNearArtists() {
@@ -347,7 +331,7 @@ void Fan::initRandomStartingValues() {
 	ATTRACTED_TO_JOHNNIE = (double)generateRandom(-100, 100) / 100;
 	ATTRACTED_TO_ANDRE = (double)generateRandom(-100, 100) / 100;
 	STICK_INTENSITY = (double)generateRandom(0, 100) / 100;
-	COLLISION_INTENSITY = (double)generateRandom(500, 600) / 100;
+	COLLISION_INTENSITY = (double)generateRandom(0, 100) / 100;
 	MIMIC_INTENSITY = (double)generateRandom(0, 100) / 100;
 }
 

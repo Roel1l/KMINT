@@ -44,14 +44,14 @@ public:
 	double STICK_INTENSITY = 0.01;
 
 	const bool AVOID_COLLISION = true;
-	const double COLLISION_RADIUS = 8;
+	const double COLLISION_RADIUS = 100;
 	double COLLISION_INTENSITY = 1.0;
 
 	const bool MIMIC_DIRECTION = true;
 	double MIMIC_RADIUS = 100; 
 	double MIMIC_INTENSITY = 0.1;
 
-	const bool RANDOM_STEERING = true;
+	const bool RANDOM_STEERING = false;
 	bool STEER_INTENSITY = 0.05;
 
 	const bool STAY_NEAR_ARTISTS = true;
