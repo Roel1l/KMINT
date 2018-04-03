@@ -2,7 +2,7 @@
 class Vector
 {
 public:
-	Vector();
+	Vector() { x = 0, y = 0; }
 	~Vector();
 
 	void setRichting(double xIn, double yIn);

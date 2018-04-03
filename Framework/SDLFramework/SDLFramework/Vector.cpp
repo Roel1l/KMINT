@@ -2,11 +2,6 @@
 #include <cmath>
 
 
-Vector::Vector()
-{
-}
-
-
 Vector::~Vector()
 {
 }
@@ -18,7 +13,7 @@ void Vector::setRichting(double xIn, double yIn)
 }
 
 double Vector::getLength() {
-	double lengte = sqrt((std::pow(x, 2) + std::pow(y, 2)));
-	return lengte;
+	double length = sqrt((std::pow(x, 2) + std::pow(y, 2)));
+	return length;
 }
 

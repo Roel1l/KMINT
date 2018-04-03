@@ -12,6 +12,7 @@
 #include "Manager.h"
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -37,20 +38,20 @@ int main(int args[])
 		artists.push_back(new Artist(map));
 
 		if (i == 0) {
-			artists[i]->name = "Axel Tulp";
+			artists[i]->name = "Axel_Tulp";
 			artists[i]->setColor(Color(0, 0, 102, 255));
 		}
 		if (i == 1) {
-			artists[i]->name = "Johnnie Smith";
+			artists[i]->name = "Johnnie_Smith";
 			artists[i]->setColor(Color(0, 0, 31, 255));
 			artists[i]->hostile = true;
 		}
 		if (i == 2) {
-			artists[i]->name = "Andre Konijnes";
+			artists[i]->name = "Andre_Konijnes";
 			artists[i]->setColor(Color(51, 255, 51, 255));
 		}
 		if (i == 3) {
-			artists[i]->name = "Frans Sloper";
+			artists[i]->name = "Frans_Sloper";
 			artists[i]->setColor(Color(255, 255, 0, 255));
 		}
 	}
@@ -67,136 +68,145 @@ int main(int args[])
 
 	std::vector<Fan*>* fans = new vector<Fan*>;
 
-	if (AMOUNT_OF_ARTISTS > 3) {
-		for (int i = AMOUNT_OF_FANS; i > 0; i--) {
-			Fan* fan = new Fan(i, fans, map);
-			fan->axel = artists[0];
-			fan->johnnie = artists[1];
-			fan->andre = artists[2];
-			fan->frans = artists[3];
+	for (int i = AMOUNT_OF_FANS; i > 0; i--) {
+		Fan* fan = new Fan(i, fans, map, artists);
 
-			fan->initRandomStartingValues();
-			fan->spawn();
+		fan->initRandomStartingValues();
+		fan->spawn();
 
-			fans->push_back(fan);
-			application->AddRenderable(fan);
-		}
+		fans->push_back(fan);
+		application->AddRenderable(fan);
 	}
+	
 #pragma endregion
 
 	uint32_t msTimeOfLastButtonPressed = 0;
 	uint32_t msTimeOfLastButtonPeriodTick = 0;
-	uint32_t msTimeBetweenPeriodTicks = 1000;
+	uint32_t msTimeBetweenPeriodTicks = 500;
 
 	int simulationNumber = 1;
 	int periodNumber = 0;
 
-	Tile* t = map->getTileByCoordinates(1066.3529116917155, 720.78243684678728);
-
 	while (application->IsRunning())
 	{
-		application->StartTick();
-		uint32_t msTimeCurrent = application->GetTimeSinceStartedMS();
-		if (msTimeCurrent - msTimeOfLastButtonPeriodTick >= (double)msTimeBetweenPeriodTicks * GLOBAL_SPEED) {
-			msTimeOfLastButtonPeriodTick = msTimeCurrent;
-			periodNumber++;
-		}
+		if (periodNumber < AMOUNT_OF_PERIODS_IN_SIMULATION) {
+			application->StartTick();
 
-		std::string simulationText = "Simulation: " + std::to_string(simulationNumber);
-		std::string periodText = " Period: " + std::to_string(periodNumber);
-		std::string title = simulationText + periodText;
-
-		application->setWindowTitle(title.c_str());
-
-		if (SHOW_PATH) {
-			for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) tile->partOfPath = false;
-			for (int i = 0; i < artists.size(); i++) 
-			{
-				if (i == 0 && SHOW_AXEL_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
-				if (i == 1 && SHOW_JOHNNIE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
-				if (i == 2 && SHOW_ANDRE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
-				if (i == 3 && SHOW_FRANS_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+			uint32_t msTimeCurrent = application->GetTimeSinceStartedMS();
+			if (msTimeCurrent - msTimeOfLastButtonPeriodTick >= (double)msTimeBetweenPeriodTicks * GLOBAL_SPEED) {
+				msTimeOfLastButtonPeriodTick = msTimeCurrent;
+				periodNumber++;
 			}
-			if(SHOW_MANAGER_PATH) for each (Tile* t in manager->path) t->partOfPath = true;
-		}
+
+			std::string simulationText = "Simulation: " + std::to_string(simulationNumber);
+			std::string periodText = " Period: " + std::to_string(periodNumber);
+			std::string title = simulationText + periodText;
+
+			application->setWindowTitle(title.c_str());
+
+			if (SHOW_PATH) {
+				for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) tile->partOfPath = false;
+				for (int i = 0; i < artists.size(); i++)
+				{
+					if (i == 0 && SHOW_AXEL_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+					if (i == 1 && SHOW_JOHNNIE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+					if (i == 2 && SHOW_ANDRE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+					if (i == 3 && SHOW_FRANS_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
+				}
+				if (SHOW_MANAGER_PATH) for each (Tile* t in manager->path) t->partOfPath = true;
+			}
 
 #pragma region Handling Key Events
-		SDL_Event event;
-		while (SDL_PollEvent(&event))
-		{
-			switch (event.type)
+			SDL_Event event;
+			while (SDL_PollEvent(&event))
 			{
-			case SDL_QUIT:
-				application->Quit();
-				break;
-			case SDL_KEYDOWN:
-				switch (event.key.keysym.scancode) {
-				case SDL_SCANCODE_PAGEUP:
-					GLOBAL_SPEED += 0.1;
+				switch (event.type)
+				{
+				case SDL_QUIT:
+					application->Quit();
 					break;
-				case SDL_SCANCODE_PAGEDOWN:
-					GLOBAL_SPEED = GLOBAL_SPEED <= 0 ? 0 : GLOBAL_SPEED - 0.1;
-					break;
-				case SDL_SCANCODE_P:
-					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
-						SHOW_PATH = !SHOW_PATH;
-						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+				case SDL_KEYDOWN:
+					switch (event.key.keysym.scancode) {
+					case SDL_SCANCODE_PAGEUP:
+						GLOBAL_SPEED += 0.1;
+						break;
+					case SDL_SCANCODE_PAGEDOWN:
+						GLOBAL_SPEED = GLOBAL_SPEED <= 0 ? 0 : GLOBAL_SPEED - 0.1;
+						break;
+					case SDL_SCANCODE_P:
+						if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+							SHOW_PATH = !SHOW_PATH;
+							msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+						}
+						break;
+					case SDL_SCANCODE_3:
+						if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+							SHOW_ANDRE_PATH = !SHOW_ANDRE_PATH;
+							msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+						}
+						break;
+					case SDL_SCANCODE_1:
+						if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+							SHOW_AXEL_PATH = !SHOW_AXEL_PATH;
+							msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+						}
+						break;
+					case SDL_SCANCODE_4:
+						if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+							SHOW_FRANS_PATH = !SHOW_FRANS_PATH;
+							msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+						}
+						break;
+					case SDL_SCANCODE_2:
+						if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+							SHOW_JOHNNIE_PATH = !SHOW_JOHNNIE_PATH;
+							msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+						}
+						break;
+					case SDL_SCANCODE_0:
+						if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
+							SHOW_MANAGER_PATH = !SHOW_MANAGER_PATH;
+							msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
+						}
+						break;
+					default:
+						break;
 					}
 					break;
-				case SDL_SCANCODE_3:
-					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
-						SHOW_ANDRE_PATH = !SHOW_ANDRE_PATH;
-						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
-					}
-					break;
-				case SDL_SCANCODE_1:
-					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
-						SHOW_AXEL_PATH = !SHOW_AXEL_PATH;
-						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
-					}
-					break;
-				case SDL_SCANCODE_4:
-					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
-						SHOW_FRANS_PATH = !SHOW_FRANS_PATH;
-						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
-					}
-					break;
-				case SDL_SCANCODE_2:
-					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
-						SHOW_JOHNNIE_PATH = !SHOW_JOHNNIE_PATH;
-						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
-					}
-					break;
-				case SDL_SCANCODE_0:
-					if (application->GetTimeSinceStartedMS() - msTimeOfLastButtonPressed > 100) {
-						SHOW_MANAGER_PATH = !SHOW_MANAGER_PATH;
-						msTimeOfLastButtonPressed = application->GetTimeSinceStartedMS();
-					}
-					break;
-				default:
+				case SDL_MOUSEBUTTONDOWN:
 					break;
 				}
-				break;
-			case SDL_MOUSEBUTTONDOWN:
-				break;
 			}
-		}
 #pragma endregion
 
-		map->drawMap(application);
-		application->UpdateGameObjects();
-		application->RenderGameObjects();
+			map->drawMap(application);
+			application->UpdateGameObjects();
+			application->RenderGameObjects();
 
-		application->SetColor(Color(0, 0, 0, 255));
-		for (int i = 0; i < artists.size(); i++) {
-			application->DrawText(artists[i]->name + " money: " + std::to_string(artists[i]->money), 100, 740 + 20 * i);
+			application->SetColor(Color(0, 0, 0, 255));
+			for (int i = 0; i < artists.size(); i++) {
+				application->DrawText(artists[i]->name + " money: " + std::to_string(artists[i]->money), 100 + 300 * i, 10);
+			}
+
+			application->DrawText("Simulation Speed: " + std::to_string(GLOBAL_SPEED), 400, 740);
+			application->DrawText("Show Path (P): " + std::to_string(SHOW_PATH), 400, 760);
+
+			application->SetColor(Color(255, 255, 255, 255));
+			application->EndTick();
 		}
+		else {
+			periodNumber = 0;
+			simulationNumber++;
 
-		application->DrawText("Simulation Speed: " + std::to_string(GLOBAL_SPEED), 400, 740);
-		application->DrawText("Show Path (P): " + std::to_string(SHOW_PATH), 400, 760);
+			std::sort(fans->begin(), fans->end(),
+				[](Fan* const & a, Fan* const & b) -> bool
+			{ return a->nearArtistsPoints > b->nearArtistsPoints; });
 
-		application->SetColor(Color(255, 255, 255, 255));
-		application->EndTick();
+			// 0 = Best fitness, 100 = worst fitness
+
+
+			int i = 3;
+		}
 	}
 
 	for each (Fan* fan in *fans) delete fan;

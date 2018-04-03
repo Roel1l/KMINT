@@ -1,8 +1,30 @@
 #pragma once
 #include <random>
 
-const int AMOUNT_OF_ARTISTS = 4; // Max = 4;
+// Simulation
+const int AMOUNT_OF_SIMULATIONS = 5;
+const int AMOUNT_OF_PERIODS_IN_SIMULATION = 100;
+
+// Artists
+const int AMOUNT_OF_ARTISTS = 2; // Max = 4;
+
+// Fans
 const int AMOUNT_OF_FANS = 100;
+
+const bool COHESION = true;
+const double COHESION_RADIUS = 100;
+
+const bool SEPARATION = true;
+const double SEPARATION_RADIUS = 100;
+
+const bool ALIGNMENT = true;
+const double MIMIC_RADIUS = 100;
+
+const bool STEERING = false;
+const double STEER_INTENSITY = 0.05;
+
+const bool STAY_NEAR_ARTISTS = true;
+const double NEAR_ARTIST_RADIUS = 30;
 
 // Game speed
 extern double GLOBAL_SPEED;
@@ -17,7 +39,7 @@ extern bool SHOW_MANAGER_PATH;
 
 // Screen
 const int SCREEN_WIDTH = 1280;
-const int SCREEN_HEIGTH = 820;
+const int SCREEN_HEIGTH = 720;
 
 // Functions
 static std::random_device rd;

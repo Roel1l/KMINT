@@ -6,21 +6,19 @@
 #include "Map.h"
 #include "Tile.h"
 #include "Artist.h"
+#include <map>
 
 class Fan : public IGameObject
 {
 public:
-	Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn);
+	Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn, std::vector<Artist*> artistsIn);
 	~Fan();
 	void Update(float deltaTime);
-	Vector Steer();
-	Vector avoidCollision(std::vector<Fan*> nearbyFans);
-	Vector mimicDirection(std::vector<Fan*> nearbyFans);
-	Vector stayNearOthers(std::vector<Fan*> nearbyFans);
-	Vector goToAxel();
-	Vector goToJohnnie();
-	Vector goToAndre();
-	Vector goToFrans();
+	Vector getSteeringVector();
+	Vector getSeparationVector(std::vector<Fan*> nearbyFans);
+	Vector getAlignmentVector(std::vector<Fan*> nearbyFans);
+	Vector getCohesionVector(std::vector<Fan*> nearbyFans);
+	Vector getAttractedToArtistsVector();
 	void move();
 	int getPointsForBeingNearArtists();
 	bool checkIfDead();
@@ -36,39 +34,14 @@ public:
 
 	bool dead = false;
 
+	std::vector<Artist*> artists;
+	std::map<std::string, double> chromosome;
+
 	//Behaviour
 	double SPEED = 1;
 
-	const bool STAY_NEAR_OTHERS = true;
-	const double STICK_RADIUS = 100;
-	double STICK_INTENSITY = 0.01;
 
-	const bool AVOID_COLLISION = true;
-	const double COLLISION_RADIUS = 100;
-	double COLLISION_INTENSITY = 1.0;
-
-	const bool MIMIC_DIRECTION = true;
-	double MIMIC_RADIUS = 100; 
-	double MIMIC_INTENSITY = 0.1;
-
-	const bool RANDOM_STEERING = false;
-	bool STEER_INTENSITY = 0.05;
-
-	const bool STAY_NEAR_ARTISTS = true;
-	const double NEAR_ARTIST_RADIUS = 30;
 	uint32_t nearArtistsPoints = 0;
-
-	Artist* axel;
-	double ATTRACTED_TO_AXEL = 1.0;
-
-	Artist* johnnie;
-	double ATTRACTED_TO_JOHNNIE = 1.0;
-
-	Artist* frans;
-	double ATTRACTED_TO_FRANS = 1.0;
-
-	Artist* andre;
-	double ATTRACTED_TO_ANDRE = 1.0;
 
 private:
 	SDL_Texture *texture;

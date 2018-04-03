@@ -6,11 +6,12 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-Fan::Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn)
+Fan::Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn, std::vector<Artist*> artistsIn)
 {
 	fans = fansIn;
 	id = fanId;
 	map = mapIn;
+	artists = artistsIn;
 }
 
 Fan::~Fan()
@@ -32,43 +33,32 @@ void Fan::Update(float deltaTime) {
 
 		move();
 
-		Vector one = avoidCollision(getNearbyFans(COLLISION_RADIUS));
-		Vector two = mimicDirection(getNearbyFans(MIMIC_RADIUS));
-		Vector three = stayNearOthers(getNearbyFans(STICK_RADIUS));
-		Vector four = Steer();
+		Vector separation = getSeparationVector(getNearbyFans(SEPARATION_RADIUS));
+		Vector alignment = getAlignmentVector(getNearbyFans(MIMIC_RADIUS));
+		Vector cohesion = getCohesionVector(getNearbyFans(COHESION_RADIUS));
+		Vector artists = getAttractedToArtistsVector();
+		Vector steer = getSteeringVector();
 
-
-		if (AVOID_COLLISION) { if (one.x != 0 || one.y != 0) direction.x += one.x; direction.y += one.y; }
-		if (MIMIC_DIRECTION) { if (two.x != 0 || two.y != 0) direction.x += two.x; direction.y += two.y; }
-		if (STAY_NEAR_OTHERS) { if (three.x != 0 || three.y != 0) direction.x += three.x; direction.y += three.y; }
-		if (RANDOM_STEERING) { direction.x += four.x, direction.y += four.y; }
-
-		//Artists
-		if (STAY_NEAR_ARTISTS) {
-			Vector axel = goToAxel();
-			Vector johnnie = goToJohnnie();
-			Vector frans = goToFrans();
-			Vector andre = goToAndre();
-			if (axel.x != 0 || axel.y != 0) direction.x += axel.x; direction.y += axel.y;
-			if (johnnie.x != 0 || johnnie.y != 0) direction.x += johnnie.x; direction.y += johnnie.y;
-			if (frans.x != 0 || frans.y != 0) direction.x += frans.x; direction.y += frans.y;
-			if (andre.x != 0 || andre.y != 0) andre.x += andre.x; direction.y += andre.y;
-		}
+		if (SEPARATION) { direction.x += separation.x; direction.y += separation.y; }
+		if (ALIGNMENT) { direction.x += alignment.x; direction.y += alignment.y; }
+		if (COHESION) { direction.x += cohesion.x; direction.y += cohesion.y; }
+		if (STAY_NEAR_ARTISTS) { direction.x += artists.x; direction.y += artists.y; }
+		if (STEERING) { direction.x += steer.x, direction.y += steer.y; }
 
 		mApplication->SetColor(Color(0, 0, 0, 255));
 		mApplication->DrawRect(x, y, 5, 5, true);
 	}
 }
 
-Vector Fan::Steer()
+Vector Fan::getSteeringVector()
 {
 	int power = 5;
 	Vector returnVector;
 
-	int squareX1 = direction.x * 10 - power;
-	int squareX2 = direction.x * 10 + power;
-	int squareY1 = direction.y * 10 - power;
-	int squareY2 = direction.y * 10 + power;
+	int squareX1 = direction.x * 2 - power;
+	int squareX2 = direction.x * 2 + power;
+	int squareY1 = direction.y * 2 - power;
+	int squareY2 = direction.y * 2 + power;
 
 	returnVector.x = generateRandom(squareX1, squareX2);
 	returnVector.y = generateRandom(squareY1, squareY2);
@@ -82,24 +72,21 @@ Vector Fan::Steer()
 	return returnVector;
 }
 
-Vector Fan::avoidCollision(std::vector<Fan*> nearbyFans) {
+Vector Fan::getSeparationVector(std::vector<Fan*> nearbyFans) {
 	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
 
 	for each (Fan* otherFan in nearbyFans)
 	{
 		if (otherFan->id != id) {
 			Vector temp;
-			temp.x = 0;
-			temp.y = 0;
 			temp.x += x - otherFan->x;
 			temp.y += y - otherFan->y;
 
 			double length = temp.getLength();
-			if (length > COLLISION_INTENSITY) {
-				temp.x = temp.x / length * COLLISION_INTENSITY;
-				temp.y = temp.y / length * COLLISION_INTENSITY;
+			double separation = chromosome.at("separation");
+			if (length > separation) {
+				temp.x = temp.x / length * separation;
+				temp.y = temp.y / length * separation;
 			}
 
 			returnVector.x += temp.x;
@@ -111,25 +98,23 @@ Vector Fan::avoidCollision(std::vector<Fan*> nearbyFans) {
 
 }
 
-Vector Fan::mimicDirection(std::vector<Fan*> nearbyFans) {
+Vector Fan::getAlignmentVector(std::vector<Fan*> nearbyFans) {
 	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
 
 	for each (Fan* otherFan in nearbyFans)
 	{
 		if (otherFan->id != id) {
 			Vector temp;
-			temp.x = 0;
-			temp.y = 0;
 
 			temp.x += otherFan->direction.x;
 			temp.y += otherFan->direction.y;
 
 			double length = temp.getLength();
-			if (length > MIMIC_INTENSITY) {
-				temp.x = temp.x / length * MIMIC_INTENSITY;
-				temp.y = temp.y / length * MIMIC_INTENSITY;
+			double alignment = chromosome.at("alignment");
+
+			if (length > alignment) {
+				temp.x = temp.x / length * alignment;
+				temp.y = temp.y / length * alignment;
 			}
 
 			returnVector.x += temp.x;
@@ -140,24 +125,21 @@ Vector Fan::mimicDirection(std::vector<Fan*> nearbyFans) {
 	return returnVector;
 }
 
-Vector Fan::stayNearOthers(std::vector<Fan*> nearbyFans) {
+Vector Fan::getCohesionVector(std::vector<Fan*> nearbyFans) {
 	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
 
 	for each (Fan* otherFan in nearbyFans)
 	{
 		if (otherFan->id != id) {
 			Vector temp;
-			temp.x = 0;
-			temp.y = 0;
 			temp.x += otherFan->x - x + 2;
 			temp.y += otherFan->y - y + 2;
 
 			double length = temp.getLength();
-			if (length > STICK_INTENSITY) {
-				temp.x = temp.x / length * STICK_INTENSITY;
-				temp.y = temp.y / length * STICK_INTENSITY;
+			double cohesion = chromosome.at("cohesion");
+			if (length > cohesion) {
+				temp.x = temp.x / length * cohesion;
+				temp.y = temp.y / length * cohesion;
 			}
 
 			returnVector.x += temp.x;
@@ -168,94 +150,27 @@ Vector Fan::stayNearOthers(std::vector<Fan*> nearbyFans) {
 	return returnVector;
 }
 
-Vector Fan::goToAxel() {
+Vector Fan::getAttractedToArtistsVector() {
 	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
 
-	Vector temp;
-	temp.x = 0;
-	temp.y = 0;
-	temp.x += axel->currentTile->absoluteX + 10 - x;
-	temp.y += axel->currentTile->absoluteY + 10 - y;
+	for each (Artist* artist in artists)
+	{
+		Vector temp;
+		temp.x += artist->currentTile->absoluteX + 10 - x;
+		temp.y += artist->currentTile->absoluteY + 10 - y;
 
-	double length = temp.getLength();
-	if (length > ATTRACTED_TO_AXEL) {
-		temp.x = temp.x / length * ATTRACTED_TO_AXEL;
-		temp.y = temp.y / length * ATTRACTED_TO_AXEL;
+		double length = temp.getLength();
+		double attracted_to_artist = chromosome.at("attracted_to_" + artist->name);
+
+		if (length > attracted_to_artist) {
+			temp.x = temp.x / length * attracted_to_artist;
+			temp.y = temp.y / length * attracted_to_artist;
+		}
+
+		returnVector.x += temp.x;
+		returnVector.y += temp.y;
 	}
 
-	returnVector.x += temp.x;
-	returnVector.y += temp.y;
-
-	return returnVector;
-}
-
-Vector Fan::goToJohnnie() {
-	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
-
-	Vector temp;
-	temp.x = 0;
-	temp.y = 0;
-	temp.x += johnnie->currentTile->absoluteX + 10 - x;
-	temp.y += johnnie->currentTile->absoluteY + 10 - y;
-
-	double length = temp.getLength();
-	if (length > ATTRACTED_TO_JOHNNIE) {
-		temp.x = temp.x / length * ATTRACTED_TO_JOHNNIE;
-		temp.y = temp.y / length * ATTRACTED_TO_JOHNNIE;
-	}
-
-	returnVector.x += temp.x;
-	returnVector.y += temp.y;
-
-	return returnVector;
-}
-
-Vector Fan::goToAndre() {
-	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
-
-	Vector temp;
-	temp.x = 0;
-	temp.y = 0;
-	temp.x += andre->currentTile->absoluteX + 10 - x;
-	temp.y += andre->currentTile->absoluteY + 10 - y;
-
-	double length = temp.getLength();
-	if (length > ATTRACTED_TO_ANDRE) {
-		temp.x = temp.x / length * ATTRACTED_TO_ANDRE;
-		temp.y = temp.y / length * ATTRACTED_TO_ANDRE;
-	}
-
-	returnVector.x += temp.x;
-	returnVector.y += temp.y;
-
-	return returnVector;
-}
-
-Vector Fan::goToFrans() {
-	Vector returnVector;
-	returnVector.x = 0;
-	returnVector.y = 0;
-
-	Vector temp;
-	temp.x = 0;
-	temp.y = 0;
-	temp.x += frans->currentTile->absoluteX + 10 - x;
-	temp.y += frans->currentTile->absoluteY + 10 - y;
-
-	double length = temp.getLength();
-	if (length > ATTRACTED_TO_FRANS) {
-		temp.x = temp.x / length * ATTRACTED_TO_FRANS;
-		temp.y = temp.y / length * ATTRACTED_TO_FRANS;
-	}
-
-	returnVector.x += temp.x;
-	returnVector.y += temp.y;
 
 	return returnVector;
 }
@@ -279,60 +194,45 @@ int Fan::getPointsForBeingNearArtists() {
 
 	int returnValue = 0;
 
-	if (x >= axel->currentTile->absoluteX - NEAR_ARTIST_RADIUS &&
-		x <= axel->currentTile->absoluteX + axel->width + NEAR_ARTIST_RADIUS &&
-		y >= axel->currentTile->absoluteY - NEAR_ARTIST_RADIUS &&
-		y <= axel->currentTile->absoluteY + axel->heigth + NEAR_ARTIST_RADIUS
-		) {
-		returnValue++;
-	}
-
-	if (x >= johnnie->currentTile->absoluteX - NEAR_ARTIST_RADIUS &&
-		x <= johnnie->currentTile->absoluteX + johnnie->width + NEAR_ARTIST_RADIUS &&
-		y >= johnnie->currentTile->absoluteY - NEAR_ARTIST_RADIUS &&
-		y <= johnnie->currentTile->absoluteY + johnnie->heigth + NEAR_ARTIST_RADIUS
-		) {
-		returnValue++;
-	}
-
-	if (x >= andre->currentTile->absoluteX - NEAR_ARTIST_RADIUS &&
-		x <= andre->currentTile->absoluteX + andre->width + NEAR_ARTIST_RADIUS &&
-		y >= andre->currentTile->absoluteY - NEAR_ARTIST_RADIUS &&
-		y <= andre->currentTile->absoluteY + andre->heigth + NEAR_ARTIST_RADIUS
-		) {
-		returnValue++;
-	}
-
-	if (x >= frans->currentTile->absoluteX - NEAR_ARTIST_RADIUS &&
-		x <= frans->currentTile->absoluteX + frans->width + NEAR_ARTIST_RADIUS &&
-		y >= frans->currentTile->absoluteY - NEAR_ARTIST_RADIUS &&
-		y <= frans->currentTile->absoluteY + frans->heigth + NEAR_ARTIST_RADIUS
-		) {
-		returnValue++;
+	for each (Artist* artist in artists)
+	{
+		if (x >= artist->currentTile->absoluteX - NEAR_ARTIST_RADIUS &&
+			x <= artist->currentTile->absoluteX + artist->width + NEAR_ARTIST_RADIUS &&
+			y >= artist->currentTile->absoluteY - NEAR_ARTIST_RADIUS &&
+			y <= artist->currentTile->absoluteY + artist->heigth + NEAR_ARTIST_RADIUS
+			) 
+			returnValue++;
 	}
 
 	return returnValue;
 }
 
-bool Fan::checkIfDead() {
-	return
-		x >= johnnie->currentTile->absoluteX - 15 &&
-		x <= johnnie->currentTile->absoluteX + johnnie->width + 15 &&
-		y >= johnnie->currentTile->absoluteY - 15 &&
-		y <= johnnie->currentTile->absoluteY + johnnie->heigth + 15
-		?
-		true : false;
+bool Fan::checkIfDead() {	
+	for each (Artist* artist in artists )
+	{
+		if (artist->hostile) {
+			if (x >= artist->currentTile->absoluteX - 15 &&
+				x <= artist->currentTile->absoluteX + artist->width + 15 &&
+				y >= artist->currentTile->absoluteY - 15 &&
+				y <= artist->currentTile->absoluteY + artist->heigth + 15) {
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 void Fan::initRandomStartingValues() {
 
-	ATTRACTED_TO_AXEL = (double)generateRandom(-100, 100) / 100;
-	ATTRACTED_TO_FRANS = (double)generateRandom(-100, 100) / 100;
-	ATTRACTED_TO_JOHNNIE = (double)generateRandom(-100, 100) / 100;
-	ATTRACTED_TO_ANDRE = (double)generateRandom(-100, 100) / 100;
-	STICK_INTENSITY = (double)generateRandom(0, 100) / 100;
-	COLLISION_INTENSITY = (double)generateRandom(0, 100) / 100;
-	MIMIC_INTENSITY = (double)generateRandom(0, 100) / 100;
+	chromosome.insert(std::make_pair("cohesion", (double)generateRandom(0, 100) / 100));
+	chromosome.insert(std::make_pair("separation", ((double)generateRandom(0, 100) + 0) / 100));
+	chromosome.insert(std::make_pair("alignment", (double)generateRandom(0, 100) / 100));
+
+	for each (Artist* artist in artists)
+	{
+		chromosome.insert(std::make_pair("attracted_to_" + artist->name, (double)generateRandom(-100, 100) / 100));
+	}
 }
 
 void Fan::spawn() {
