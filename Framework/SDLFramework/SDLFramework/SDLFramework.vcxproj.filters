@@ -49,6 +49,9 @@
     <ClCompile Include="Fan.cpp">
       <Filter>Fan</Filter>
     </ClCompile>
+    <ClCompile Include="Genetics.cpp">
+      <Filter>Fan</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h">
@@ -100,6 +103,9 @@
       <Filter>Manager\States</Filter>
     </ClInclude>
     <ClInclude Include="Fan.h">
+      <Filter>Fan</Filter>
+    </ClInclude>
+    <ClInclude Include="Genetics.h">
       <Filter>Fan</Filter>
     </ClInclude>
   </ItemGroup>

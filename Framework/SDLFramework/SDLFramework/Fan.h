@@ -14,38 +14,42 @@ public:
 	Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn, std::vector<Artist*> artistsIn);
 	~Fan();
 	void Update(float deltaTime);
+	void initRandomStartingValues();
+	void spawn();
+
+	int id;
+	double x;
+	double y;
+
+	Map* map;
+
+	std::vector<Artist*> artists;
+	std::vector<Fan*>* fans;
+
+	std::map<std::string, double> chromosome;
+
+	uint32_t fitness = 0;
+
+private:
+
 	Vector getSteeringVector();
 	Vector getSeparationVector(std::vector<Fan*> nearbyFans);
 	Vector getAlignmentVector(std::vector<Fan*> nearbyFans);
 	Vector getCohesionVector(std::vector<Fan*> nearbyFans);
 	Vector getAttractedToArtistsVector();
 	void move();
-	int getPointsForBeingNearArtists();
-	bool checkIfDead();
-	void initRandomStartingValues();
-	void spawn();
+
 	Vector getOppositeVector(Vector v);
 	Vector direction;
-	double x;
-	double y;
-	int id;
-	std::vector<Fan*>* fans;
-	Map* map;
 
-	bool dead = false;
+	int getPointsForBeingNearArtists();
+	bool checkIfDead();
 
-	std::vector<Artist*> artists;
-	std::map<std::string, double> chromosome;
-
-	//Behaviour
-	double SPEED = 1;
-
-
-	uint32_t nearArtistsPoints = 0;
-
-private:
 	SDL_Texture *texture;
 	std::vector<Fan*> getNearbyFans(double range);
+	bool dead = false;
+
+	double SPEED = 1;
 
 };
 

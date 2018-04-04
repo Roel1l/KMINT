@@ -91,6 +91,7 @@
     <ClCompile Include="ArtistWanderState.cpp" />
     <ClCompile Include="Fan.cpp" />
     <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="Genetics.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Manager.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="Fan.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="FWApplication.h" />
+    <ClInclude Include="Genetics.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Manager.h" />

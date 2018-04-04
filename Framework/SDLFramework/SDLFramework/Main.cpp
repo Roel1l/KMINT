@@ -13,6 +13,7 @@
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 #include <algorithm>
+#include "Genetics.h"
 
 using namespace std;
 
@@ -41,18 +42,21 @@ int main(int args[])
 			artists[i]->name = "Axel_Tulp";
 			artists[i]->setColor(Color(0, 0, 102, 255));
 		}
-		if (i == 1) {
+		else if (i == 1) {
 			artists[i]->name = "Johnnie_Smith";
 			artists[i]->setColor(Color(0, 0, 31, 255));
 			artists[i]->hostile = true;
 		}
-		if (i == 2) {
+		else if (i == 2) {
 			artists[i]->name = "Andre_Konijnes";
 			artists[i]->setColor(Color(51, 255, 51, 255));
 		}
-		if (i == 3) {
+		else if (i == 3) {
 			artists[i]->name = "Frans_Sloper";
 			artists[i]->setColor(Color(255, 255, 0, 255));
+		}
+		else {
+			artists[i]->name = "New_Artist_" + std::to_string(i);
 		}
 	}
 
@@ -69,7 +73,10 @@ int main(int args[])
 	std::vector<Fan*>* fans = new vector<Fan*>;
 
 	for (int i = AMOUNT_OF_FANS; i > 0; i--) {
-		Fan* fan = new Fan(i, fans, map, artists);
+
+		LAST_FAN_ID++;
+
+		Fan* fan = new Fan(LAST_FAN_ID, fans, map, artists);
 
 		fan->initRandomStartingValues();
 		fan->spawn();
@@ -195,17 +202,24 @@ int main(int args[])
 			application->EndTick();
 		}
 		else {
+			Genetics g;
+			std::vector<Fan*> newPopulation = g.fitness_proportionate_selection(*fans);
+
+			for each (Fan* fan in *fans) {
+				application->RemoveRenderable(fan);
+				delete fan;
+			}
+			fans->clear();
+
+			for each (Fan* fan in newPopulation)
+			{
+				fans->push_back(fan);
+				fan->spawn();
+				application->AddRenderable(fan);
+			}
+
 			periodNumber = 0;
 			simulationNumber++;
-
-			std::sort(fans->begin(), fans->end(),
-				[](Fan* const & a, Fan* const & b) -> bool
-			{ return a->nearArtistsPoints > b->nearArtistsPoints; });
-
-			// 0 = Best fitness, 100 = worst fitness
-
-
-			int i = 3;
 		}
 	}
 

@@ -3,6 +3,7 @@
 #include <functional>
 #include <cstdint>
 #include <vector>
+#include <algorithm>
 #include "Globals.h"
 
 class IGameObject;
@@ -227,6 +228,8 @@ public:
 	/// <param name="renderable">	[in,out] If non-null, the renderable. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void AddRenderable(IGameObject * renderable);
+
+	void RemoveRenderable(IGameObject * renderable);
 
 	uint32_t GetTimeSinceStartedMS() const;
 

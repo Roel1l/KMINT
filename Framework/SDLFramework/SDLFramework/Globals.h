@@ -6,9 +6,10 @@ const int AMOUNT_OF_SIMULATIONS = 5;
 const int AMOUNT_OF_PERIODS_IN_SIMULATION = 100;
 
 // Artists
-const int AMOUNT_OF_ARTISTS = 2; // Max = 4;
+const int AMOUNT_OF_ARTISTS = 2; 
 
 // Fans
+extern int LAST_FAN_ID;
 const int AMOUNT_OF_FANS = 100;
 
 const bool COHESION = true;

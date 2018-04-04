@@ -1,4 +1,17 @@
-﻿  Tile.cpp
+﻿  Main.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(116): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(194): warning C4018: '<': signed/unsigned mismatch
+  Genetics.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(17): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(23): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(38): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(71): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(78): warning C4018: '<': signed/unsigned mismatch
+  FWApplication.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fwapplication.cpp(273): warning C4838: conversion from 'uint32_t' to 'Uint8' requires a narrowing conversion
+  Generating Code...
+  Compiling...
+  Tile.cpp
   Map.cpp
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(23): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(34): warning C4018: '<': signed/unsigned mismatch
@@ -11,10 +24,6 @@ c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managerw
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managervisitartiststate.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   ManagerState.cpp
   Manager.cpp
-  Main.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(109): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(187): warning C4018: '<': signed/unsigned mismatch
-  Globals.cpp
   Fan.cpp
 c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\math.h(1001): warning C4005: 'M_PI': macro redefinition
   c:\users\rel\documents\github\kmint\framework\sdl2-2.0.3\include\sdl_stdinc.h(350): note: see previous definition of 'M_PI'
@@ -23,9 +32,7 @@ c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(59): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(60): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(61): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(260): warning C4018: '<': signed/unsigned mismatch
-  FWApplication.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fwapplication.cpp(268): warning C4838: conversion from 'uint32_t' to 'Uint8' requires a narrowing conversion
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(263): warning C4018: '<': signed/unsigned mismatch
   ArtistWanderState.cpp
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistwanderstate.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   ArtistWaitState.cpp
@@ -36,8 +43,7 @@ c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistsh
   Generating Code...
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(144): warning C4715: 'Map::findPath': not all control paths return a value
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\tile.cpp(19): warning C4715: 'Tile::weight': not all control paths return a value
-     Creating library C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.lib and object C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exp
-SDL2_gfx.lib(SDL2_gfxPrimitives.obj) : warning LNK4099: PDB 'SDL2_gfx.pdb' was not found with 'SDL2_gfx.lib(SDL2_gfxPrimitives.obj)' or at 'C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDL2_gfx.pdb'; linking object as if no debug info
-SDL2_gfx.lib(SDL2_rotozoom.obj) : warning LNK4099: PDB 'SDL2_gfx.pdb' was not found with 'SDL2_gfx.lib(SDL2_rotozoom.obj)' or at 'C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDL2_gfx.pdb'; linking object as if no debug info
+  Skipping... (no relevant changes detected)
+  Globals.cpp
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)
