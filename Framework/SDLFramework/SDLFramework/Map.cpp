@@ -94,6 +94,14 @@ void Map::drawMap(FWApplication* application) {
 	}
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+/// <summary>	Uses the A* algorithm to find a path of tiles from a starting tile to a finish tile. (https://youtu.be/mZfyt03LDH4) </summary>
+///
+/// <remarks>	Roel Guerand, 14-03-2018. </remarks>
+///
+/// <returns>	A list of tiles that represent the shortest path from the given start to the given target </returns>
+////////////////////////////////////////////////////////////////////////////////////////////////////
 std::vector<Tile*> Map::findPath(Tile* start, Tile* target) {
 	std::vector<Tile*> openSet;
 	std::vector<Tile*> closedSet;
@@ -109,6 +117,7 @@ std::vector<Tile*> Map::findPath(Tile* start, Tile* target) {
 		openSet.erase(std::remove(openSet.begin(), openSet.end(), current), openSet.end());
 		closedSet.push_back(current);
 
+		// If current is the target node path has been found
 		if (current == target) {
 			std::vector<Tile*> path;
 			Tile* t = target;

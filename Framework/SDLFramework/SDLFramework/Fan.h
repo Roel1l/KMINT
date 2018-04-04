@@ -29,7 +29,7 @@ public:
 
 	std::map<std::string, double> chromosome;
 
-	uint32_t fitness = 0;
+	uint32_t fitness = 1;
 
 private:
 

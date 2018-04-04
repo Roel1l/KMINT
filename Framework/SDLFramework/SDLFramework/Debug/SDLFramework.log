@@ -7,5 +7,22 @@ c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(66): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(268): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Tile.cpp
+  Map.cpp
+  ManagerWanderState.cpp
+  ManagerVisitArtistState.cpp
+  ManagerState.cpp
+  Manager.cpp
+  Globals.cpp
+  FWApplication.cpp
+  ArtistWanderState.cpp
+  ArtistWaitState.cpp
+  ArtistState.cpp
+  ArtistShopState.cpp
+  Artist.cpp
+  Main.cpp
+  Genetics.cpp
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

@@ -20,8 +20,8 @@ public:
 	double weight();
 	bool traversable();
 
-	double gCost = 0; //distance from starting node
-	double hCost = 0; //distance from endnode
+	double gCost = 0; // distance from starting node
+	double hCost = 0; // distance from endnode
 
 	double fCost() { return gCost + hCost; }
 
