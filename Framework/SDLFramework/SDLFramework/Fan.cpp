@@ -186,6 +186,8 @@ void Fan::move() {
 
 	bool canMoveY = tileY->type != '1' && tileY->type != '2' && tileY->type != '3' ? false : true;
 
+
+
 	if (!canMoveX) direction.x = 0;
 	if (!canMoveY) direction.y = 0;
 

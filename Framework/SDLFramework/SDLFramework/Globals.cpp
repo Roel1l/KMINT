@@ -13,3 +13,4 @@ bool SHOW_MANAGER_PATH = true;
 
 // Fans
 int LAST_FAN_ID = 0;
+bool SHOW_FAN_STATS = false;

@@ -22,6 +22,13 @@ void Artist::Update(float deltaTime)
 Artist::Artist(Map * mapIn)
 {
 	map = mapIn; 
+
+}
+
+void Artist::spawn() {
+	money = 1000;
+	wait = 0;
+	delete state;
 	state = new ArtistWanderState(this);
 	int random = generateRandom(0, map->walkableTileIndexes.size() - 1);
 	currentTile = map->getTile(std::get<0>(map->walkableTileIndexes[random]), std::get<1>(map->walkableTileIndexes[random]));

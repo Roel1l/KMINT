@@ -28,10 +28,11 @@ public:
 
 	int money = 1000;
 	int wait = 0;
-	uint32_t msTimeBetweenActions = 500; //Means the artist will execute an action every 1000 ms
+	uint32_t msTimeBetweenActions = 500; //Means the artist will execute an action every 500 ms
 	uint32_t msTimeOfLastAction = 0;
 
 	Artist(Map* mapIn);
+	void spawn();
 	void setColor(Color colorIn) { color = colorIn; }
 	void move();
 	bool doesArtistNeedMoney();

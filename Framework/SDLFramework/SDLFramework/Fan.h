@@ -20,6 +20,7 @@ public:
 	int id;
 	double x;
 	double y;
+	bool dead = false;
 
 	Map* map;
 
@@ -47,7 +48,7 @@ private:
 
 	SDL_Texture *texture;
 	std::vector<Fan*> getNearbyFans(double range);
-	bool dead = false;
+
 
 	double SPEED = 1;
 

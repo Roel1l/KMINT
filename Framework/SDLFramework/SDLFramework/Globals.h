@@ -6,7 +6,7 @@ const int AMOUNT_OF_SIMULATIONS = 5;
 const int AMOUNT_OF_PERIODS_IN_SIMULATION = 100;
 
 // Artists
-const int AMOUNT_OF_ARTISTS = 2; 
+const int AMOUNT_OF_ARTISTS = 4; 
 
 // Fans
 extern int LAST_FAN_ID;
@@ -26,6 +26,8 @@ const double STEER_INTENSITY = 0.05;
 
 const bool STAY_NEAR_ARTISTS = true;
 const double NEAR_ARTIST_RADIUS = 30;
+
+extern bool SHOW_FAN_STATS;
 
 // Game speed
 extern double GLOBAL_SPEED;

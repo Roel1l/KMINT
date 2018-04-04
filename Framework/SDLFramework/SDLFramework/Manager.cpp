@@ -20,6 +20,11 @@ void Manager::Update(float deltaTime)
 Manager::Manager(Map * mapIn)
 {
 	map = mapIn;
+}
+
+void Manager::spawn() {
+	wait = 0;
+	delete state;
 	state = new ManagerWanderState(this);
 	int random = generateRandom(0, map->walkableTileIndexes.size() - 1);
 	currentTile = map->getTile(std::get<0>(map->walkableTileIndexes[random]), std::get<1>(map->walkableTileIndexes[random]));
