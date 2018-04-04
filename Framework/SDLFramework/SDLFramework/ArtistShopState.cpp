@@ -3,6 +3,7 @@
 ArtistShopState::ArtistShopState(Artist * artistIn)
 {
 	artist = artistIn;
+	name = "ArtistShopState";
 
 	//Set Path To random Shop
 	int randomShop = generateRandom(0, artist->map->shopTileIndexes.size() - 1);

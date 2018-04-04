@@ -4,7 +4,7 @@
 class ArtistWanderState : public ArtistState
 {
 public:
-	ArtistWanderState(Artist* artistIn) { artist = artistIn; }
+	ArtistWanderState(Artist* artistIn) { artist = artistIn; name = "ArtistWanderState";	}
 
 	void Update(float deltaTime);
 	void move();

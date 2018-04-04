@@ -14,6 +14,7 @@ public:
 	virtual void move() {};
 	void checkState();
 
+	std::string name;
 	Manager* manager;
 };
 

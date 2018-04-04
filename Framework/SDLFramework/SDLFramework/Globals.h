@@ -2,8 +2,10 @@
 #include <random>
 
 // Simulation
-const int AMOUNT_OF_SIMULATIONS = 5;
+const int AMOUNT_OF_SIMULATIONS = 1;
 const int AMOUNT_OF_PERIODS_IN_SIMULATION = 100;
+
+extern bool SHOW_STATS;
 
 // Artists
 const int AMOUNT_OF_ARTISTS = 4; 
@@ -12,6 +14,9 @@ const int AMOUNT_OF_ARTISTS = 4;
 extern int LAST_FAN_ID;
 const int AMOUNT_OF_FANS = 100;
 
+const double NEARBY_ARTISTS_RADIUS = 100;
+const double NEARBY_FANS_RADIUS = 100;
+
 const bool COHESION = true;
 const double COHESION_RADIUS = 100;
 
@@ -19,15 +24,13 @@ const bool SEPARATION = true;
 const double SEPARATION_RADIUS = 100;
 
 const bool ALIGNMENT = true;
-const double MIMIC_RADIUS = 100;
+const double ALIGNMENT_RADIUS = 100;
 
 const bool STEERING = false;
 const double STEER_INTENSITY = 0.05;
 
 const bool STAY_NEAR_ARTISTS = true;
 const double NEAR_ARTIST_RADIUS = 30;
-
-extern bool SHOW_FAN_STATS;
 
 // Game speed
 extern double GLOBAL_SPEED;

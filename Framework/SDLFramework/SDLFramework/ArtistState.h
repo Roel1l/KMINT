@@ -14,6 +14,9 @@ public:
 	virtual void Update(float deltaTime) {};
 	virtual void move() {};
 	virtual bool doesArtistNeedMoney() { return false; };
+	
+	std::string name;
+
 	void checkState();
 
 	Artist* artist;

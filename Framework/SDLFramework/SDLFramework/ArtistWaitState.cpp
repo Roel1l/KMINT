@@ -3,6 +3,8 @@
 ArtistWaitState::ArtistWaitState(Artist * artistIn)
 {
 	artist = artistIn;
+	name = "ArtistWaitState";
+
 	artist->path.clear();
 }
 

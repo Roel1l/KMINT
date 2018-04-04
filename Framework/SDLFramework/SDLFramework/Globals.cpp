@@ -1,5 +1,8 @@
 #include "Globals.h"
 
+// Simulation
+bool SHOW_STATS = true;
+
 // Game Speed
 double GLOBAL_SPEED = 1.0;
 
@@ -13,4 +16,3 @@ bool SHOW_MANAGER_PATH = true;
 
 // Fans
 int LAST_FAN_ID = 0;
-bool SHOW_FAN_STATS = false;

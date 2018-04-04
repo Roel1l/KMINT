@@ -12,6 +12,8 @@ Fan::Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn, std::vector<Artist*> 
 	id = fanId;
 	map = mapIn;
 	artists = artistsIn;
+
+	SetSize(5, 5);
 }
 
 Fan::~Fan()
@@ -33,20 +35,23 @@ void Fan::Update(float deltaTime) {
 
 		move();
 
-		Vector separation = getSeparationVector(getNearbyFans(SEPARATION_RADIUS));
-		Vector alignment = getAlignmentVector(getNearbyFans(MIMIC_RADIUS));
-		Vector cohesion = getCohesionVector(getNearbyFans(COHESION_RADIUS));
-		Vector artists = getAttractedToArtistsVector();
+		std::vector<Fan*> nearbyFans = getNearbyFans(NEARBY_ARTISTS_RADIUS);
+		std::vector<Artist*> nearbyArtists = getNearbyArtists(NEARBY_FANS_RADIUS); //currently unused
+
+		Vector separation = getSeparationVector(nearbyFans);
+		Vector alignment = getAlignmentVector(nearbyFans);
+		Vector cohesion = getCohesionVector(nearbyFans);
+		Vector artist = getAttractedToArtistsVector(artists);
 		Vector steer = getSteeringVector();
 
 		if (SEPARATION) { direction.x += separation.x; direction.y += separation.y; }
 		if (ALIGNMENT) { direction.x += alignment.x; direction.y += alignment.y; }
 		if (COHESION) { direction.x += cohesion.x; direction.y += cohesion.y; }
-		if (STAY_NEAR_ARTISTS) { direction.x += artists.x; direction.y += artists.y; }
+		if (STAY_NEAR_ARTISTS) { direction.x += artist.x; direction.y += artist.y; }
 		if (STEERING) { direction.x += steer.x, direction.y += steer.y; }
 
 		mApplication->SetColor(Color(0, 0, 0, 255));
-		mApplication->DrawRect(x, y, 5, 5, true);
+		mApplication->DrawRect(x, y, mWidth, mHeight, true);
 	}
 }
 
@@ -132,8 +137,8 @@ Vector Fan::getCohesionVector(std::vector<Fan*> nearbyFans) {
 	{
 		if (otherFan->id != id) {
 			Vector temp;
-			temp.x += otherFan->x - x + 2;
-			temp.y += otherFan->y - y + 2;
+			temp.x += otherFan->x - x;
+			temp.y += otherFan->y - y;
 
 			double length = temp.getLength();
 			double cohesion = chromosome.at("cohesion");
@@ -150,10 +155,10 @@ Vector Fan::getCohesionVector(std::vector<Fan*> nearbyFans) {
 	return returnVector;
 }
 
-Vector Fan::getAttractedToArtistsVector() {
+Vector Fan::getAttractedToArtistsVector(std::vector<Artist*> nearbyArtists) {
 	Vector returnVector;
 
-	for each (Artist* artist in artists)
+	for each (Artist* artist in nearbyArtists)
 	{
 		Vector temp;
 		temp.x += artist->currentTile->absoluteX + 10 - x;
@@ -171,28 +176,26 @@ Vector Fan::getAttractedToArtistsVector() {
 		returnVector.y += temp.y;
 	}
 
-
 	return returnVector;
 }
 
 void Fan::move() {
-	int correctionX = x + direction.x > x ? 4 : 0;
-	int correctionY = y + direction.y > y ? 4 : 0;
+	int correctionX = x + direction.x > x ? mWidth - 1 : 0;
+	int correctionY = y + direction.y > y ? mHeight - 1 : 0;
 
-	Tile * tileX = map->getTileByCoordinates(x + direction.x + correctionX, y + direction.y);
+	Tile * tileX = map->getTileByCoordinates(x + direction.x + correctionX, y);
 	Tile * tileY = map->getTileByCoordinates(x, y + direction.y + correctionY);
 
-	bool canMoveX = tileX->type != '1' && tileX->type != '2' && tileX->type != '3' ? false : true;
+	bool canMoveX = true;
+	bool canMoveY = true;
+	
+	if (tileX->type != '1' && tileX->type != '2' && tileX->type != '3') canMoveX = false;
+	if (tileY->type != '1' && tileY->type != '2' && tileY->type != '3') canMoveY = false;
 
-	bool canMoveY = tileY->type != '1' && tileY->type != '2' && tileY->type != '3' ? false : true;
+	std::vector<Fan*> nearbyFans = getNearbyFans(100);
 
-
-
-	if (!canMoveX) direction.x = 0;
-	if (!canMoveY) direction.y = 0;
-
-	x = x + direction.x;
-	y = y + direction.y;
+	if (canMoveX) x = x + direction.x;
+	if (canMoveY) y = y + direction.y;
 }
 
 int Fan::getPointsForBeingNearArtists() {
@@ -216,9 +219,9 @@ bool Fan::checkIfDead() {
 	for each (Artist* artist in artists )
 	{
 		if (artist->hostile) {
-			if (x >= artist->currentTile->absoluteX - 15 &&
+			if (x + mWidth - 1 >= artist->currentTile->absoluteX - 15 &&
 				x <= artist->currentTile->absoluteX + artist->width + 15 &&
-				y >= artist->currentTile->absoluteY - 15 &&
+				y + mHeight - 1 >= artist->currentTile->absoluteY - 15 &&
 				y <= artist->currentTile->absoluteY + artist->heigth + 15) {
 				return true;
 			}
@@ -271,4 +274,18 @@ std::vector<Fan*> Fan::getNearbyFans(double range)
 	return nearbyFans;
 }
 
+std::vector<Artist*> Fan::getNearbyArtists(double range) {
+	std::vector<Artist*> nearbyArtists;
 
+	for each(Artist* artist in artists) {
+		if (x >= artist->currentTile->absoluteX - range &&
+			x <= artist->currentTile->absoluteX + artist->width + range &&
+			y >= artist->currentTile->absoluteY - range &&
+			y <= artist->currentTile->absoluteY + artist->heigth + range
+			) {
+			nearbyArtists.push_back(artist);
+		}
+	}
+
+	return nearbyArtists;
+}

@@ -37,7 +37,7 @@ private:
 	Vector getSeparationVector(std::vector<Fan*> nearbyFans);
 	Vector getAlignmentVector(std::vector<Fan*> nearbyFans);
 	Vector getCohesionVector(std::vector<Fan*> nearbyFans);
-	Vector getAttractedToArtistsVector();
+	Vector getAttractedToArtistsVector(std::vector<Artist*> nearbyArtists);
 	void move();
 
 	Vector getOppositeVector(Vector v);
@@ -46,9 +46,10 @@ private:
 	int getPointsForBeingNearArtists();
 	bool checkIfDead();
 
-	SDL_Texture *texture;
 	std::vector<Fan*> getNearbyFans(double range);
+	std::vector<Artist*> getNearbyArtists(double range);
 
+	SDL_Texture *texture;
 
 	double SPEED = 1;
 

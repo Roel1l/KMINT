@@ -4,6 +4,7 @@
 ManagerVisitArtistState::ManagerVisitArtistState(Manager * managerIn)
 {
 	manager = managerIn;
+	name = "ManagerVisitArtistState";
 
 	// Set Path to Artist
 	Tile* target = manager->map->getTile(manager->artistToVisit->currentTile->gridX(), manager->artistToVisit->currentTile->gridY());

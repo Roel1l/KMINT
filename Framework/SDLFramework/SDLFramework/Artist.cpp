@@ -22,7 +22,6 @@ void Artist::Update(float deltaTime)
 Artist::Artist(Map * mapIn)
 {
 	map = mapIn; 
-
 }
 
 void Artist::spawn() {
