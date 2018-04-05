@@ -29,6 +29,8 @@ public:
 
 	std::map<std::string, double> chromosome;
 
+	std::string mutation = "";
+
 	uint32_t fitness = 1;
 
 private:

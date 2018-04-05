@@ -27,24 +27,29 @@ std::vector<Fan*> Genetics::fitness_proportionate_selection(std::vector<Fan*> po
 
 	std::vector<Fan*> newPopulation;
 
-	// Start choosing pairs of individuals to create children. Create 2/3ths of the current population as a new one
+	// Start choosing pairs of individuals to create children. Create 2/3ths of the current population as a new one (until the minimum population size of 18 has been reached)
 	int newPopulationSize = population.size() <= 18 ? 18 : population.size() / 3 * 2;
 
 	for (size_t counter = 0; counter < newPopulationSize; counter++)
 	{
-		std::vector<Fan*> tempPopulation(population.begin(), population.end());
+		std::vector<Fan*> newPopulationCompetitors;
+
+		for (int i = 0; i < population.size(); i++) {
+			if (!population[i]->dead) newPopulationCompetitors.push_back(population[i]);
+		}
+
 		std::vector<double> fitnesses;
 
-		for (int i = 0; i < tempPopulation.size(); i++) fitnesses.push_back((double)tempPopulation[i]->fitness);
+		for (int i = 0; i < newPopulationCompetitors.size(); i++) fitnesses.push_back((double)newPopulationCompetitors[i]->fitness);
 
-		Fan* chosenIndividualOne = tempPopulation.at(rouletteSelect(fitnesses));
-		tempPopulation.erase(std::remove(tempPopulation.begin(), tempPopulation.end(), chosenIndividualOne));
+		Fan* chosenIndividualOne = newPopulationCompetitors.at(rouletteSelect(fitnesses));
+		newPopulationCompetitors.erase(std::remove(newPopulationCompetitors.begin(), newPopulationCompetitors.end(), chosenIndividualOne));
 
 		fitnesses.clear();
 
-		for (int i = 0; i < tempPopulation.size(); i++) fitnesses.push_back((double)tempPopulation[i]->fitness);
+		for (int i = 0; i < newPopulationCompetitors.size(); i++) fitnesses.push_back((double)newPopulationCompetitors[i]->fitness);
 
-		Fan* chosenIndividualTwo = tempPopulation.at(rouletteSelect(fitnesses));
+		Fan* chosenIndividualTwo = newPopulationCompetitors.at(rouletteSelect(fitnesses));
 
 		newPopulation.push_back(getChild(chosenIndividualOne, chosenIndividualTwo));
 	}
@@ -93,12 +98,25 @@ Fan* Genetics::getChild(Fan* parentOne, Fan* parentTwo) {
 	int separationIndex = generateRandom(0, parentOne->chromosome.size() - 1);
 
 	int counter = 0;
+	bool mutated = false;
 
 	// copy the chromosomes of the parents into the child chromosome using the separationIndex as division point between what parent to use.
 	for (auto const& chromosomeBit : parentOne->chromosome) {
 
 		if (counter <= separationIndex) child->chromosome.insert(chromosomeBit);
 		else child->chromosome.insert(std::make_pair(chromosomeBit.first, parentTwo->chromosome.at(chromosomeBit.first)));
+
+		if (!mutated) {
+			int mutationChance = generateRandom(0, 1000);
+			if (mutationChance == 1) {
+				if (chromosomeBit.first.length() < 12) 
+					child->chromosome[chromosomeBit.first] = ((double)generateRandom(0, 100) / 100);
+				else child->chromosome[chromosomeBit.first] = ((double)generateRandom(-100, 100) / 100);
+
+				child->mutation = chromosomeBit.first;
+				mutated = true;
+			}
+		}
 
 		counter++;
 	}

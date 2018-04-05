@@ -261,7 +261,10 @@ int main(int args[])
 			for (auto const& chromosomeBit : fans->at(fanInfoIterator)->chromosome) {
 
 				std::string info = chromosomeBit.second < 0 ? chromosomeBit.first + ": " + std::to_string(chromosomeBit.second).substr(0, 5) : chromosomeBit.first + ": " + std::to_string(chromosomeBit.second).substr(0, 4);
+				
+				if (fans->at(fanInfoIterator)->mutation == chromosomeBit.first) application->SetColor(Color(255, 0, 0, 255));
 				application->DrawText(info, SCREEN_WIDTH - 100, SCREEN_HEIGTH - 290 + counter * lineheigth);
+				application->SetColor(Color(0, 0, 0, 255));
 
 				counter++;
 			}

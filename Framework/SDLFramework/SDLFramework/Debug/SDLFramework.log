@@ -1,28 +1,12 @@
-﻿  Fan.cpp
-c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\math.h(1001): warning C4005: 'M_PI': macro redefinition
-  c:\users\rel\documents\github\kmint\framework\sdl2-2.0.3\include\sdl_stdinc.h(350): note: see previous definition of 'M_PI'
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(63): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(64): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(66): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(268): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Tile.cpp
-  Map.cpp
-  ManagerWanderState.cpp
-  ManagerVisitArtistState.cpp
-  ManagerState.cpp
-  Manager.cpp
-  Globals.cpp
-  FWApplication.cpp
-  ArtistWanderState.cpp
-  ArtistWaitState.cpp
-  ArtistState.cpp
-  ArtistShopState.cpp
-  Artist.cpp
-  Main.cpp
-  Genetics.cpp
+﻿  Genetics.cpp
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(33): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(37): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(43): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(70): warning C4018: '<': signed/unsigned mismatch
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(76): warning C4018: '<': signed/unsigned mismatch
+     Creating library C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.lib and object C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exp
+SDL2_gfx.lib(SDL2_gfxPrimitives.obj) : warning LNK4099: PDB 'SDL2_gfx.pdb' was not found with 'SDL2_gfx.lib(SDL2_gfxPrimitives.obj)' or at 'C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDL2_gfx.pdb'; linking object as if no debug info
+SDL2_gfx.lib(SDL2_rotozoom.obj) : warning LNK4099: PDB 'SDL2_gfx.pdb' was not found with 'SDL2_gfx.lib(SDL2_rotozoom.obj)' or at 'C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDL2_gfx.pdb'; linking object as if no debug info
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)
