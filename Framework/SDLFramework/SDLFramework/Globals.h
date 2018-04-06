@@ -2,7 +2,7 @@
 #include <random>
 
 // Simulation
-const int AMOUNT_OF_SIMULATIONS = 1;
+const int AMOUNT_OF_SIMULATIONS = 10;
 const int AMOUNT_OF_PERIODS_IN_SIMULATION = 100;
 
 extern bool SHOW_STATS;

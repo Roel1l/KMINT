@@ -49,9 +49,9 @@ void Map::loadMap() {
 		for (int y = 0; y < yMax; y++)
 		{
 			char tileType = grid[x][y]->type;
-			if (tileType == 'B') solidTileIndexes.push_back(std::tuple<int, int>({ x, y }));
-			else if(tileType == '1' || tileType == '2' || tileType == '3') walkableTileIndexes.push_back(std::tuple<int, int>({ x, y }));
-			else shopTileIndexes.push_back(std::tuple<int, int>({ x, y }));
+			if (tileType == 'B') solidTileIndexes.push_back(std::tuple<int, int>{ x, y });
+			else if(tileType == '1' || tileType == '2' || tileType == '3') walkableTileIndexes.push_back(std::tuple<int, int>{ x, y });
+			else shopTileIndexes.push_back(std::tuple<int, int>{ x, y });
 		}
 	}
 }
