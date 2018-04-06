@@ -107,7 +107,7 @@ Fan* Genetics::getChild(Fan* parentOne, Fan* parentTwo) {
 		else child->chromosome.insert(std::make_pair(chromosomeBit.first, parentTwo->chromosome.at(chromosomeBit.first)));
 
 		if (!mutated) {
-			int mutationChance = generateRandom(0, 1000);
+			int mutationChance = generateRandom(0, MUTATION_CHANCE);
 			if (mutationChance == 1) {
 				if (chromosomeBit.first.length() < 12) 
 					child->chromosome[chromosomeBit.first] = ((double)generateRandom(0, 100) / 100);

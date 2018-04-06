@@ -32,6 +32,9 @@ const double STEER_INTENSITY = 0.05;
 const bool STAY_NEAR_ARTISTS = true;
 const double NEAR_ARTIST_RADIUS = 30;
 
+// Genetic Algorithm
+const int MUTATION_CHANCE = 500;
+
 // Game speed
 extern double GLOBAL_SPEED;
 

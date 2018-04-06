@@ -1,11 +1,4 @@
-﻿  Genetics.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(33): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(43): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(50): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(70): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(76): warning C4018: '<': signed/unsigned mismatch
-     Creating library C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.lib and object C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exp
+﻿     Creating library C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.lib and object C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exp
 SDL2_gfx.lib(SDL2_gfxPrimitives.obj) : warning LNK4099: PDB 'SDL2_gfx.pdb' was not found with 'SDL2_gfx.lib(SDL2_gfxPrimitives.obj)' or at 'C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDL2_gfx.pdb'; linking object as if no debug info
 SDL2_gfx.lib(SDL2_rotozoom.obj) : warning LNK4099: PDB 'SDL2_gfx.pdb' was not found with 'SDL2_gfx.lib(SDL2_rotozoom.obj)' or at 'C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDL2_gfx.pdb'; linking object as if no debug info
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe

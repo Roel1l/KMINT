@@ -36,6 +36,7 @@ public:
 private:
 
 	Vector getSteeringVector();
+	Vector getCollisionVector(std::vector<Fan*> nearbyFans);
 	Vector getSeparationVector(std::vector<Fan*> nearbyFans);
 	Vector getAlignmentVector(std::vector<Fan*> nearbyFans);
 	Vector getCohesionVector(std::vector<Fan*> nearbyFans);

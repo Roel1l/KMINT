@@ -43,12 +43,14 @@ void Fan::Update(float deltaTime) {
 		Vector cohesion = getCohesionVector(nearbyFans);
 		Vector artist = getAttractedToArtistsVector(artists);
 		Vector steer = getSteeringVector();
+		Vector collision = getCollisionVector(getNearbyFans(8));
 
 		if (SEPARATION) { direction.x += separation.x; direction.y += separation.y; }
 		if (ALIGNMENT) { direction.x += alignment.x; direction.y += alignment.y; }
 		if (COHESION) { direction.x += cohesion.x; direction.y += cohesion.y; }
 		if (STAY_NEAR_ARTISTS) { direction.x += artist.x; direction.y += artist.y; }
 		if (STEERING) { direction.x += steer.x, direction.y += steer.y; }
+		direction.x += collision.x, direction.y += collision.y;
 
 		mApplication->SetColor(Color(0, 0, 0, 255));
 		mApplication->DrawRect(x, y, mWidth, mHeight, true);
@@ -75,6 +77,32 @@ Vector Fan::getSteeringVector()
 	}
 
 	return returnVector;
+}
+
+Vector Fan::getCollisionVector(std::vector<Fan*> nearbyFans) {
+	Vector returnVector;
+
+	for each (Fan* otherFan in nearbyFans)
+	{
+		if (otherFan->id != id) {
+			Vector temp;
+			temp.x += x - otherFan->x;
+			temp.y += y - otherFan->y;
+
+			double length = temp.getLength();
+			double intensity = 500;
+			if (length > intensity) {
+				temp.x = temp.x / length * intensity;
+				temp.y = temp.y / length * intensity;
+			}
+
+			returnVector.x += temp.x;
+			returnVector.y += temp.y;
+		}
+	}
+
+	return returnVector;
+
 }
 
 Vector Fan::getSeparationVector(std::vector<Fan*> nearbyFans) {
@@ -180,6 +208,7 @@ Vector Fan::getAttractedToArtistsVector(std::vector<Artist*> nearbyArtists) {
 }
 
 void Fan::move() {
+
 	int correctionX = x + direction.x > x ? mWidth - 1 : 0;
 	int correctionY = y + direction.y > y ? mHeight - 1 : 0;
 
@@ -192,7 +221,6 @@ void Fan::move() {
 	if (tileX->type != '1' && tileX->type != '2' && tileX->type != '3') canMoveX = false;
 	if (tileY->type != '1' && tileY->type != '2' && tileY->type != '3') canMoveY = false;
 
-	std::vector<Fan*> nearbyFans = getNearbyFans(100);
 
 	if (canMoveX) x = x + direction.x;
 	if (canMoveY) y = y + direction.y;
