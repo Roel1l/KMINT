@@ -35,9 +35,6 @@ const double NEAR_ARTIST_RADIUS = 30;
 // Genetic Algorithm
 const int MUTATION_CHANCE = 500;
 
-// Game speed
-extern double GLOBAL_SPEED;
-
 // Pathing
 extern bool SHOW_PATH;
 extern bool SHOW_AXEL_PATH;

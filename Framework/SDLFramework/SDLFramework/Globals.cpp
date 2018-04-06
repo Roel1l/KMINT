@@ -3,9 +3,6 @@
 // Simulation
 bool SHOW_STATS = true;
 
-// Game Speed
-double GLOBAL_SPEED = 1.0;
-
 // Pathing
 bool SHOW_PATH = false;
 bool SHOW_AXEL_PATH = true;

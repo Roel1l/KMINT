@@ -111,6 +111,7 @@ std::vector<Tile*> Map::findPath(Tile* start, Tile* target) {
 	while (openSet.size() > 0) {
 		Tile* current = openSet[0];
 		for each (Tile* t in openSet) {
+			// Check which tile seems cheapest to travel through.
 			if (t->fCost() < current->fCost() || t->fCost() == current->fCost() && t->hCost < current->hCost) current = t;
 		}
 
@@ -132,10 +133,12 @@ std::vector<Tile*> Map::findPath(Tile* start, Tile* target) {
 		}
 
 		for each (Tile* neighbour in current->neighbours) {
+			// If the neighbour was checked already or if it's not possible to walk to the neighbour continue the loop
 			if (std::find(closedSet.begin(), closedSet.end(), neighbour) != closedSet.end() || !neighbour->traversable()) {
 				continue;
 			}
 
+			// Calculate the cost of walking to the neigbour taking the neighbours weight in account.
 			double newMovementCostToNeighbour = current->gCost + getDistance(current, neighbour) * neighbour->weight();
 			if (newMovementCostToNeighbour < neighbour->gCost || std::find(openSet.begin(), openSet.end(), neighbour) == openSet.end()) {
 				neighbour->gCost = newMovementCostToNeighbour;

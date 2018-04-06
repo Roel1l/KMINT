@@ -125,10 +125,10 @@ int main(int args[])
 				case SDL_KEYDOWN:
 					switch (event.key.keysym.scancode) {
 					case SDL_SCANCODE_PAGEUP:
-						GLOBAL_SPEED += 0.1;
+						msTimeBetweenPeriodTicks = msTimeBetweenPeriodTicks <= 1 ? 100 : msTimeBetweenPeriodTicks + 100;
 						break;
 					case SDL_SCANCODE_PAGEDOWN:
-						GLOBAL_SPEED = GLOBAL_SPEED <= 0 ? 0 : GLOBAL_SPEED - 0.1;
+						msTimeBetweenPeriodTicks = msTimeBetweenPeriodTicks <= 100 ? 1 : msTimeBetweenPeriodTicks - 100;
 						break;
 					case SDL_SCANCODE_P:
 						SHOW_PATH = !SHOW_PATH;
@@ -173,7 +173,7 @@ int main(int args[])
 			
 			uint32_t msTimeCurrent = application->GetTimeSinceStartedMS();
 			if (msTimeCurrent - msTimeOfLastButtonPeriodTick >= msTimeBetweenPeriodTicks) {
-				msTimeOfLastButtonPeriodTick = floor((msTimeCurrent / 500)) * 500;
+				msTimeOfLastButtonPeriodTick = floor((msTimeCurrent / msTimeBetweenPeriodTicks)) * msTimeBetweenPeriodTicks;
 				for (Artist* a : artists) a->Update(0);
 				manager->Update(0);
 				periodNumber++;
@@ -206,12 +206,20 @@ int main(int args[])
 			periodNumber = 0;
 			simulationNumber++;
 		}
+		else {
+			application->SetColor(Color(0, 0, 0, 255));
+			application->DrawText("Finished", SCREEN_WIDTH / 2, SCREEN_HEIGTH / 3);
+		}
 
 		std::string simulationText = "Simulation: " + std::to_string(simulationNumber);
 		std::string periodText = " Period: " + std::to_string(periodNumber);
 		std::string title = simulationText + periodText;
 
 		application->setWindowTitle(title.c_str());
+
+		application->SetColor(Color(255, 255, 255, 255));
+		application->DrawText(std::to_string(msTimeBetweenPeriodTicks), SCREEN_WIDTH - 20, 10);
+	
 
 		if (SHOW_PATH) {
 			for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) tile->partOfPath = false;

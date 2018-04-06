@@ -23,8 +23,6 @@ public:
 	Color color = Color(0, 255, 255, 255);
 
 	int wait = 0;
-	uint32_t msTimeBetweenActions = 500; //Means the manager will execute an action every 1000 ms
-	uint32_t msTimeOfLastAction = 0;
 
 	Manager(Map* mapIn);
 	void spawn();

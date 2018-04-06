@@ -274,6 +274,7 @@ void FWApplication::DrawText(const std::string & message, uint32_t offsetX, uint
 	//SDL_Color bgColor = { mTextBackgroundColor.r, mTextBackgroundColor.g, mTextBackgroundColor.b, mTextBackgroundColor.a };
 
 	SDL_Surface * surface = TTF_RenderText_Blended(mFont, message.c_str(), color);
+
 	if (surface)
 	{
 		SDL_Texture * texture = SDL_CreateTextureFromSurface(mRenderer, surface);
