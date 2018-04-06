@@ -35,6 +35,8 @@ public:
 	~Manager();
 	void Update(float deltaTime);
 
+	void Draw();
+
 	MANAGER_STATE_CHANGE stateChange = MANAGER_STATE_CHANGE::NO_STATE_CHANGE;
 
 };

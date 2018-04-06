@@ -14,6 +14,7 @@ public:
 	Fan(int fanId, std::vector<Fan*>* fansIn, Map* mapIn, std::vector<Artist*> artistsIn);
 	~Fan();
 	void Update(float deltaTime);
+	void Draw();
 	void initRandomStartingValues();
 	void spawn();
 

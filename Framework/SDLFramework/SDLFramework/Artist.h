@@ -40,6 +40,8 @@ public:
 	~Artist();
 	void Update(float deltaTime);
 
+	void Draw();
+
 	ARTIST_STATE_CHANGE stateChange = ARTIST_STATE_CHANGE::NO_STATE_CHANGE;
 };
 

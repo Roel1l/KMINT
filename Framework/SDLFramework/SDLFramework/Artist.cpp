@@ -3,21 +3,17 @@
 
 void Artist::Update(float deltaTime)
 {
-	uint32_t msTimeCurrent = mApplication->GetTimeSinceStartedMS();
-
-	if (msTimeCurrent - msTimeOfLastAction >= (double)msTimeBetweenActions * GLOBAL_SPEED) {
-		msTimeOfLastAction = msTimeCurrent;
 		state->checkState();
 		state->Update(deltaTime);
 		wait = wait <= 0 ? 0 : wait - 1;
 		if(wait < 1) move();
-	}
+}
 
+void Artist::Draw() {
 	mApplication->SetColor(color);
 	//mApplication->DrawCircle(currentTile->absoluteX + 10, currentTile->absoluteY + 10, 10, true);
 	mApplication->DrawRect(currentTile->absoluteX + 2, currentTile->absoluteY + 2, width, heigth, true);
 }
-
 
 Artist::Artist(Map * mapIn)
 {

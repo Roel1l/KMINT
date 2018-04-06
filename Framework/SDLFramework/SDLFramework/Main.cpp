@@ -18,11 +18,6 @@
 using namespace std;
 
 uint32_t msTimeOfLastButtonPressed = 0;
-uint32_t msTimeOfLastButtonPeriodTick = 0;
-uint32_t msTimeBetweenPeriodTicks = 500;
-
-int simulationNumber = 1;
-int periodNumber = 0;
 
 FWApplication* application;
 
@@ -108,6 +103,11 @@ int main(int args[])
 #pragma endregion
 
 	int fanInfoIterator = 0;
+	int simulationNumber = 1;
+	int periodNumber = 0;
+
+	uint32_t msTimeOfLastButtonPeriodTick = 0;
+	uint32_t msTimeBetweenPeriodTicks = 500;
 
 	while (application->IsRunning())
 	{
@@ -169,17 +169,19 @@ int main(int args[])
 
 		map->drawMap(application);
 
-		if (periodNumber <= AMOUNT_OF_PERIODS_IN_SIMULATION) {
-			if (simulationNumber <= AMOUNT_OF_SIMULATIONS) {
-				uint32_t msTimeCurrent = application->GetTimeSinceStartedMS();
-				if (msTimeCurrent - msTimeOfLastButtonPeriodTick >= (double)msTimeBetweenPeriodTicks * GLOBAL_SPEED) {
-					msTimeOfLastButtonPeriodTick = msTimeCurrent;
-					periodNumber++;
-				}
-				application->UpdateGameObjects();
+		if (periodNumber < AMOUNT_OF_PERIODS_IN_SIMULATION && simulationNumber <= AMOUNT_OF_SIMULATIONS) {
+			
+			uint32_t msTimeCurrent = application->GetTimeSinceStartedMS();
+			if (msTimeCurrent - msTimeOfLastButtonPeriodTick >= msTimeBetweenPeriodTicks) {
+				msTimeOfLastButtonPeriodTick = floor((msTimeCurrent / 500)) * 500;
+				for (Artist* a : artists) a->Update(0);
+				manager->Update(0);
+				periodNumber++;
 			}
+
+			for (Fan* f : *fans) f->Update(0);
 		}
-		else {
+		else if(simulationNumber < AMOUNT_OF_SIMULATIONS){
 			Genetics g;
 			std::vector<Fan*> newPopulation = g.fitness_proportionate_selection(*fans);
 
@@ -223,14 +225,10 @@ int main(int args[])
 			if (SHOW_MANAGER_PATH) for each (Tile* t in manager->path) t->partOfPath = true;
 		}
 
-		//application->RenderGameObjects();
-
-		application->SetColor(Color(255, 255, 255, 255));
-		for (int i = 0; i < artists.size(); i++) {
-			application->DrawText(artists[i]->name + ": " + std::to_string(artists[i]->money), 100 + 300 * i, 10);
-		}
+		application->RenderGameObjects();
 
 		if (SHOW_STATS) {
+			application->SetColor(Color(255, 255, 255, 255));
 			application->DrawRect(SCREEN_WIDTH - 400, SCREEN_HEIGTH - 300, 400, 300, true);
 			application->SetColor(Color(0, 0, 0, 255));
 

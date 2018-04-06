@@ -52,6 +52,12 @@ void Fan::Update(float deltaTime) {
 		if (STEERING) { direction.x += steer.x, direction.y += steer.y; }
 		direction.x += collision.x, direction.y += collision.y;
 
+
+	}
+}
+
+void Fan::Draw() {
+	if (!dead) {
 		mApplication->SetColor(Color(0, 0, 0, 255));
 		mApplication->DrawRect(x, y, mWidth, mHeight, true);
 	}

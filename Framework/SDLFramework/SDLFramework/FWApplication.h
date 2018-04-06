@@ -250,6 +250,8 @@ public:
 	void Quit();
 	//void AddOnEvent(std::function<void(SDL_Event*)> func);
 
+	float getDeltaTime() { return (float)mDeltaTimeMS / 1000.0f; }
+
 private:
 	std::vector<IGameObject *> mGameObjects;
 	static FWApplication * mInstance;
