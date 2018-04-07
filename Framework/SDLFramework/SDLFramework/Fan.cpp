@@ -24,8 +24,12 @@ Fan::~Fan()
 void Fan::Update(float deltaTime) {
 
 	if (!dead) {
-		dead = checkIfDead();
-		fitness += getPointsForBeingNearArtists();
+		if (checkIfDead()) {
+			dead = true;
+			fitness = 1;
+		}
+
+		//fitness += getPointsForBeingNearArtists();
 
 		double currVectorLength = direction.getLength();
 		if (currVectorLength > SPEED) {
@@ -226,7 +230,6 @@ void Fan::move() {
 	
 	if (tileX->type != '1' && tileX->type != '2' && tileX->type != '3') canMoveX = false;
 	if (tileY->type != '1' && tileY->type != '2' && tileY->type != '3') canMoveY = false;
-
 
 	if (canMoveX) x = x + direction.x;
 	if (canMoveY) y = y + direction.y;

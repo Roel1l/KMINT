@@ -32,11 +32,7 @@ std::vector<Fan*> Genetics::fitness_proportionate_selection(std::vector<Fan*> po
 
 	for (size_t counter = 0; counter < newPopulationSize; counter++)
 	{
-		std::vector<Fan*> newPopulationCompetitors;
-
-		for (int i = 0; i < population.size(); i++) {
-			if (!population[i]->dead) newPopulationCompetitors.push_back(population[i]);
-		}
+		std::vector<Fan*> newPopulationCompetitors = std::vector<Fan*>(population.begin(), population.end());
 
 		std::vector<double> fitnesses;
 

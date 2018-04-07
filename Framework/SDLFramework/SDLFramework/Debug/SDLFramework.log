@@ -1,50 +1,11 @@
-﻿  Artist.cpp
-  Generating Code...
-  Compiling...
-  Tile.cpp
-  Map.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(23): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(34): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(38): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(65): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(66): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  ManagerWanderState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managerwanderstate.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  ManagerVisitArtistState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\managervisitartiststate.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  ManagerState.cpp
-  Manager.cpp
-  Main.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(155): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(176): warning C4244: '=': conversion from 'double' to 'uint32_t', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\main.cpp(226): warning C4018: '<': signed/unsigned mismatch
-  Globals.cpp
-  Genetics.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(33): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(37): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(43): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(50): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(70): warning C4018: '<': signed/unsigned mismatch
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\genetics.cpp(76): warning C4018: '<': signed/unsigned mismatch
-  Fan.cpp
+﻿  Fan.cpp
 c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\math.h(1001): warning C4005: 'M_PI': macro redefinition
   c:\users\rel\documents\github\kmint\framework\sdl2-2.0.3\include\sdl_stdinc.h(350): note: see previous definition of 'M_PI'
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(71): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(72): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(73): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(74): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(302): warning C4018: '<': signed/unsigned mismatch
-  FWApplication.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fwapplication.cpp(273): warning C4838: conversion from 'uint32_t' to 'Uint8' requires a narrowing conversion
-  ArtistWanderState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistwanderstate.cpp(21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  ArtistWaitState.cpp
-  ArtistState.cpp
-  ArtistShopState.cpp
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\artistshopstate.cpp(27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\map.cpp(156): warning C4715: 'Map::findPath': not all control paths return a value
-c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\tile.cpp(19): warning C4715: 'Tile::weight': not all control paths return a value
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(75): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(77): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(78): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\rel\documents\github\kmint\framework\sdlframework\sdlframework\fan.cpp(305): warning C4018: '<': signed/unsigned mismatch
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.exe
   SDLFramework.vcxproj -> C:\Users\Rel\Documents\GitHub\KMINT\Framework\SDLFramework\Debug\SDLFramework.pdb (Full PDB)

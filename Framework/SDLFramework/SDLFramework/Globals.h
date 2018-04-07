@@ -33,7 +33,7 @@ const bool STAY_NEAR_ARTISTS = true;
 const double NEAR_ARTIST_RADIUS = 30;
 
 // Genetic Algorithm
-const int MUTATION_CHANCE = 500;
+const int MUTATION_CHANCE = 350;
 
 // Pathing
 extern bool SHOW_PATH;

@@ -22,6 +22,7 @@ public:
 	double x;
 	double y;
 	bool dead = false;
+	int getPointsForBeingNearArtists();
 
 	Map* map;
 
@@ -47,7 +48,7 @@ private:
 	Vector getOppositeVector(Vector v);
 	Vector direction;
 
-	int getPointsForBeingNearArtists();
+
 	bool checkIfDead();
 
 	std::vector<Fan*> getNearbyFans(double range);

@@ -176,6 +176,7 @@ int main(int args[])
 				msTimeOfLastButtonPeriodTick = floor((msTimeCurrent / msTimeBetweenPeriodTicks)) * msTimeBetweenPeriodTicks;
 				for (Artist* a : artists) a->Update(0);
 				manager->Update(0);
+				for (Fan* f : *fans) if(!f->dead) f->fitness += f->getPointsForBeingNearArtists();
 				periodNumber++;
 			}
 
