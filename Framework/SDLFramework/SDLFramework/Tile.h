@@ -31,6 +31,7 @@ public:
 
 	Color color();
 	bool partOfPath = false;
+	bool visitedByAlgorithm = false;
 
 	int getPayOut();
 

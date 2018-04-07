@@ -29,6 +29,7 @@ bool Tile::traversable()
 Color Tile::color()
 {
 	if(partOfPath && SHOW_PATH) return Color(0, 0, 0, 255);
+	if(visitedByAlgorithm && SHOW_PATH) return Color(255, 0, 0, 255);
 
 	switch (type) {
 	case 'B': return Color(47, 79, 79, 255);

@@ -8,10 +8,13 @@ Manager::Manager(Map * mapIn)
 
 void Manager::Update(float deltaTime)
 {
+	map->keepTrackOfAlgorithm = true;
 	state->checkState();
 	state->Update(deltaTime);
 	wait = wait <= 0 ? 0 : wait - 1;
 	if (wait < 1) move();
+	visitedByAlgorithm = map->visitedByAlgorithm;
+	map->keepTrackOfAlgorithm = false;
 }
 
 void Manager::Draw() {

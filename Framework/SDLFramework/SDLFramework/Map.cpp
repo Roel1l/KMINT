@@ -117,9 +117,13 @@ std::vector<Tile*> Map::findPath(Tile* start, Tile* target) {
 
 		openSet.erase(std::remove(openSet.begin(), openSet.end(), current), openSet.end());
 		closedSet.push_back(current);
+		
 
 		// If current is the target node path has been found
 		if (current == target) {
+
+			if (keepTrackOfAlgorithm) visitedByAlgorithm = closedSet;
+
 			std::vector<Tile*> path;
 			Tile* t = target;
 
@@ -162,4 +166,14 @@ double Map::getDistance(Tile* A, Tile* B) {
 
 	if (distX > distY) return 14 * distY + 10 * (distX - distY);
 	else return 14 * distX + 10 * (distY - distX);
+}
+
+void Map::clearAlgorithmTiles() {
+	for (int x = 0; x < xMax; x++)
+	{
+		for (int y = 0; y < yMax; y++)
+		{
+			grid[x][y]->visitedByAlgorithm = false;
+		}
+	}
 }

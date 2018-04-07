@@ -17,6 +17,7 @@ public:
 	Map* map;
 	SDL_Texture *texture;
 	std::vector<Tile*> path;
+	std::vector<Tile*> visitedByAlgorithm;
 	std::vector<Artist*> artists;
 	Artist* artistToVisit;
 	ManagerState* state;

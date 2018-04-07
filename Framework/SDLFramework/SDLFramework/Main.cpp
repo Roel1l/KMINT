@@ -223,7 +223,10 @@ int main(int args[])
 	
 
 		if (SHOW_PATH) {
-			for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) tile->partOfPath = false;
+			for each (std::vector<Tile*> list in map->grid) for each (Tile* tile in list) {
+				tile->visitedByAlgorithm = false;
+				tile->partOfPath = false;
+			}
 			for (int i = 0; i < artists.size(); i++)
 			{
 				if (i == 0 && SHOW_AXEL_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
@@ -231,7 +234,10 @@ int main(int args[])
 				if (i == 2 && SHOW_ANDRE_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
 				if (i == 3 && SHOW_FRANS_PATH) for each (Tile* t in artists[i]->path) t->partOfPath = true;
 			}
-			if (SHOW_MANAGER_PATH) for each (Tile* t in manager->path) t->partOfPath = true;
+			if (SHOW_MANAGER_PATH) {
+				for each (Tile* t in manager->path) t->partOfPath = true;
+				for each (Tile* t in manager->visitedByAlgorithm) t->visitedByAlgorithm = true;
+			}
 		}
 
 		application->RenderGameObjects();
